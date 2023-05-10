@@ -1,5 +1,4 @@
 package by.academy.threegroup.core;
-
 import by.academy.threegroup.core.enums.UserRoles;
 
 import java.time.LocalDate;
@@ -28,11 +27,6 @@ public class UserDTO {
         this.dateOfBirth = dateOfBirth;
         this.registrationDate = registrationDate;
         this.role = role;
-    }
-
-    public String getLogin() {
-        return login;
-    }
 
     public void setLogin(String login) {
         this.login = login;
@@ -99,11 +93,13 @@ public class UserDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserDTO userDTO = (UserDTO) o;
+
         return Objects.equals(login, userDTO.login) && Objects.equals(password, userDTO.password) && Objects.equals(firstName, userDTO.firstName) && Objects.equals(lastName, userDTO.lastName) && Objects.equals(surname, userDTO.surname) && Objects.equals(registrationDate, userDTO.registrationDate) && role == userDTO.role;
     }
 
     @Override
     public int hashCode() {
+
         return Objects.hash(login, password, firstName, lastName, surname, registrationDate, role);
     }
 
