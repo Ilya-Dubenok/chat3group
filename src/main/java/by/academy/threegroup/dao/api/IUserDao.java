@@ -1,8 +1,8 @@
-package by.academy.threegroup.service.api;
+package by.academy.threegroup.dao.api;
 
 import by.academy.threegroup.core.UserCreateDTO;
 import by.academy.threegroup.core.UserDTO;
 
-public interface IUserService extends ICRUDService<UserDTO, UserCreateDTO>{
+public interface IUserDao extends ICRUDDao<UserDTO>{
     UserDTO get(String login);
 }
