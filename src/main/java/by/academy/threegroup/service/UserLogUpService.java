@@ -1,4 +1,4 @@
 package by.academy.threegroup.service;
 
-public interface IUserService {
+public class UserLogUpService {
 }
