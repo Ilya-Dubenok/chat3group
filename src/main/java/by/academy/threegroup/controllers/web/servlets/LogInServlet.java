@@ -1,7 +1,7 @@
 package by.academy.threegroup.controllers.web.servlets;
 
 import by.academy.threegroup.core.UserLogInDTO;
-import by.academy.threegroup.dao.memory.UserDao;
+import by.academy.threegroup.dao.memory.factory.UserDaoFactory;
 import by.academy.threegroup.service.UserLogInService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -58,7 +58,7 @@ public class LogInServlet extends HttpServlet {
 
         if(login != null && password != null) {
             try{
-                (new UserLogInService(req.getSession(), new UserDao())).logIn(new UserLogInDTO(login, password));
+                (new UserLogInService(req.getSession(), UserDaoFactory.getInstance())).logIn(new UserLogInDTO(login, password));
             } catch(IllegalArgumentException e) {
                 writer.write("Wrong login or password. Please try again.");
                 this.doGet(req, resp);
