@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(urlPatterns = "api/admin/statistics")
+@WebServlet(urlPatterns = "/api/admin/statistics")
 public class StatisticsServlet extends HttpServlet {
 
     IStatisticService statisticService = StatisticsServiceFactory.getInstance();
