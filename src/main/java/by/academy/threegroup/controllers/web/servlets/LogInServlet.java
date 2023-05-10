@@ -1,7 +1,7 @@
-package by.academy.threegroup.contollers.web.servlets;
+package by.academy.threegroup.controllers.web.servlets;
 
 import by.academy.threegroup.core.UserLogInDTO;
-import by.academy.threegroup.dao.UserDao;
+import by.academy.threegroup.dao.memory.UserDao;
 import by.academy.threegroup.service.UserLogInService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;

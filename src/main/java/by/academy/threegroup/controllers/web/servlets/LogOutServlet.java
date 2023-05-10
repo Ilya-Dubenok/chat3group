@@ -1,4 +1,4 @@
-package by.academy.threegroup.contollers.web.servlets;
+package by.academy.threegroup.controllers.web.servlets;
 
 import by.academy.threegroup.service.LogOutService;
 import jakarta.servlet.RequestDispatcher;
