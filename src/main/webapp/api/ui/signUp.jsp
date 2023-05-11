@@ -1,5 +1,5 @@
 <%@ page language="java"
-contentType="text/html"; charset=UTF-8"
+contentType="text/html;charset=UTF-8"
 pageEncoding="UTF-8"%>
 <head>
     <title>LogUp</title>
@@ -9,13 +9,13 @@ pageEncoding="UTF-8"%>
     <label for="login">Login:</label>
     <input type="text" id="login" name="login" required><br><br>
     <label for="password">Password:</label>
-    <input type="text" id="password" name="password" required><br><br>
+    <input type="password" id="password" name="password" required><br><br>
     <label for="checkPassword">Password again:</label>
-    <input type="text" id="checkPassword" name="checkPassword" required><br><br>
-    <label for="fname">First name:</label>
-    <input type="text" id="fname" name="fname" required><br><br>
-    <label for="lname">Last name:</label>
-    <input type="text" id="lname" name="lname" required><br><br>
+    <input type="password" id="checkPassword" name="checkPassword" required><br><br>
+    <label for="firstName">First name:</label>
+    <input type="text" id="firstName" name="firstName" required><br><br>
+    <label for="firstName">Last name:</label>
+    <input type="text" id="firstName" name="lastName" required><br><br>
     <label for="surname">Surname:</label>
     <input type="text" id="surname" name="surname"> If exists<br><br>
     <label for="dateOfBirth">Date of birth:</label>

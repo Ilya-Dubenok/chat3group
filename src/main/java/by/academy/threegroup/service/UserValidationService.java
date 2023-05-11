@@ -16,12 +16,15 @@ public class UserValidationService {
 
     public static void validate(UserCreateDTO dto) {
         validateLogin(dto.getLogin());
-        validatePassword(dto.getPassword());
+        validatePassword(dto.getPassword(), dto.getCheckPassword());
         validateDateOfBirth(dto.getDateOfBirth());
     }
 
     //    TODO
-    private static void validatePassword(String password) {
+    private static void validatePassword(String password, String checkPassword) {
+        if(!password.equals(checkPassword)){
+            throw new IllegalArgumentException("Passwords don't match");
+        }
         if(password.length() < 7){
             throw new IllegalArgumentException("Password is too short. Must be not less than 7 symbols");
         }
@@ -47,9 +50,9 @@ public class UserValidationService {
             throw new IllegalArgumentException("Invalid format of date of birth");
         }
 
-        String day = dateParts[0];
+        String day = dateParts[2];
         String month = dateParts[1];
-        String year = dateParts[2];
+        String year = dateParts[0];
 
         if (!Pattern.matches(DAY_PATTERN, day)) {
             throw new IllegalArgumentException("Incorrect day of month");

@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UserService implements IUserService {
 
-    private static final String DATE_OF_BIRTH_FORMAT = "dd-MM-yyyy";
+    private static final String DATE_OF_BIRTH_FORMAT = "yyyy-MM-dd";
 
     private IUserDao userDao;
 

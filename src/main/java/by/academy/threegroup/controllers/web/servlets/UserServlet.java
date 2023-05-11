@@ -18,6 +18,7 @@ public class UserServlet extends HttpServlet {
 
     private static final String LOGIN_PARAM = "login";
     private static final String PASSWORD_PARAM = "password";
+    private static final String CHECK_PASSWORD_PARAM = "checkPassword";
     private static final String FIRST_NAME_PARAM = "firstName";
     private static final String LAST_NAME_PARAM = "lastName";
     private static final String SURNAME_PARAM = "surname";
@@ -37,6 +38,7 @@ public class UserServlet extends HttpServlet {
 
         String login = getValue(parameterMap, LOGIN_PARAM);
         String password = getValue(parameterMap, PASSWORD_PARAM);
+        String checkPassword = getValue(parameterMap, CHECK_PASSWORD_PARAM);
         String firstName = getValue(parameterMap, FIRST_NAME_PARAM);
         String lastName = getValue(parameterMap, LAST_NAME_PARAM);
         String surname = getValue(parameterMap, SURNAME_PARAM);
@@ -51,6 +53,7 @@ public class UserServlet extends HttpServlet {
         UserCreateDTO dto = new UserCreateDTO();
         dto.setLogin(login);
         dto.setPassword(password);
+        dto.setCheckPassword(checkPassword);
         dto.setFirstName(firstName);
         dto.setLastName(lastName);
         dto.setSurname(surname);
