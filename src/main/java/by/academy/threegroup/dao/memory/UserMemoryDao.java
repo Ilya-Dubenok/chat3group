@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class UserDao implements IUserDao {
+public class UserMemoryDao implements IUserDao {
 
     private Map<String, UserDTO> users = new ConcurrentHashMap<>();
 
-    public UserDao() {
+    public UserMemoryDao() {
         UserDTO admin = new UserDTO();
         admin.setFirstName("Admin");
         admin.setLastName("Admin");
