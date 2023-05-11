@@ -1,6 +1,6 @@
 package by.academy.threegroup.service.factory;
 
-import by.academy.threegroup.dao.memory.factory.UserDaoFactory;
+import by.academy.threegroup.dao.factory.UserDaoFactory;
 import by.academy.threegroup.service.UserService;
 import by.academy.threegroup.service.api.IUserService;
 
