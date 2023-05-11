@@ -12,8 +12,6 @@ import java.util.List;
 
 public class UserService implements IUserService {
 
-    private static final String DATE_OF_BIRTH_FORMAT = "yyyy-MM-dd";
-
     private IUserDao userDao;
 
     public UserService(IUserDao userDao) {
@@ -35,29 +33,9 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserDTO save(UserCreateDTO item) {
+    public UserDTO save(UserDTO user) {
 
-        UserValidationService.validate(item);
-
-        String login = item.getLogin();
-        Integer password = item.getPassword().hashCode();
-        String firstName = item.getFirstName();
-        String lastName = item.getLastName();
-        String surname = item.getSurname();
-        LocalDate dateOfBirth = parseDateOfBirth(item.getDateOfBirth());
-        LocalDate registrationDate = LocalDate.now();
-
-        UserDTO dto = new UserDTO(login, password, firstName, lastName, surname, dateOfBirth, registrationDate, UserRoles.USER);
-
-        return userDao.save(dto);
+        return userDao.save(user);
     }
 
-
-    private LocalDate parseDateOfBirth(String date) {
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_OF_BIRTH_FORMAT);
-        LocalDate dateOfBirth = LocalDate.parse(date, formatter);
-
-        return dateOfBirth;
-    }
 }

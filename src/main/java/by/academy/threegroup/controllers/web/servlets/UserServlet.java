@@ -1,7 +1,9 @@
 package by.academy.threegroup.controllers.web.servlets;
 
 import by.academy.threegroup.core.UserCreateDTO;
+import by.academy.threegroup.service.api.IUserLogUpService;
 import by.academy.threegroup.service.api.IUserService;
+import by.academy.threegroup.service.factory.UserLogUpServiceFactory;
 import by.academy.threegroup.service.factory.UserServiceFactory;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -59,8 +61,8 @@ public class UserServlet extends HttpServlet {
         dto.setSurname(surname);
         dto.setDateOfBirth(dateOfBirth);
 
-        IUserService userService = UserServiceFactory.getInstance();
-        userService.save(dto);
+        IUserLogUpService userLogUpService = UserLogUpServiceFactory.getInstance();
+        userLogUpService.save(dto);
     }
 
     private String getValue(Map<String, String[]> map, String paramName){

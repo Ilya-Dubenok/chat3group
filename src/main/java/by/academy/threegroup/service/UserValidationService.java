@@ -1,10 +1,11 @@
 package by.academy.threegroup.service;
 
 import by.academy.threegroup.core.UserCreateDTO;
+import by.academy.threegroup.service.api.IUserValidationService;
 
 import java.util.regex.Pattern;
 
-public class UserValidationService {
+public class UserValidationService implements IUserValidationService {
 
     private static final String LOGIN_PATTERN = "[a-zA-Z0-9][\\w.]+[a-zA-Z0-9]";
     private static final String DAY_PATTERN = "[0-2][1-9]|31|30|10|20";
@@ -13,15 +14,18 @@ public class UserValidationService {
     private static final String DAY_MONTH_PATTERN = "2902|3002|3102|3104|3106|3109|3111";
     private static final String DAY_MONTH_LEAP_PATTERN = "3002|3102|3104|3106|3109|3111";
 
+    public UserValidationService(){
+    }
 
-    public static void validate(UserCreateDTO dto) {
+    @Override
+    public void validate(UserCreateDTO dto) {
         validateLogin(dto.getLogin());
         validatePassword(dto.getPassword(), dto.getCheckPassword());
         validateDateOfBirth(dto.getDateOfBirth());
     }
 
     //    TODO
-    private static void validatePassword(String password, String checkPassword) {
+    private void validatePassword(String password, String checkPassword) {
         if(!password.equals(checkPassword)){
             throw new IllegalArgumentException("Passwords don't match");
         }
@@ -31,14 +35,14 @@ public class UserValidationService {
     }
 
 //    TODO
-    private static void validateLogin(String login){
+    private void validateLogin(String login){
         if(!Pattern.matches(LOGIN_PATTERN, login)){
             throw new IllegalArgumentException("Login must contains latin letters, digits, \"_\",\".\". It can't begin and end with \"-\", \".\"");
         }
     }
 
 
-    private static void validateDateOfBirth(String dateOfBirth) {
+    private void validateDateOfBirth(String dateOfBirth) {
 
         if (dateOfBirth.length() != 10) {
             throw new IllegalArgumentException("Invalid length of date of birth");
@@ -71,7 +75,7 @@ public class UserValidationService {
         }
     }
 
-    private static boolean validateDayMonth(String day, String month, String year) {
+    private boolean validateDayMonth(String day, String month, String year) {
         String dayMonth = day + month;
         if (isLeapYear(year)) {
             return !Pattern.matches(DAY_MONTH_LEAP_PATTERN, dayMonth);
@@ -80,7 +84,7 @@ public class UserValidationService {
         }
     }
 
-    private static boolean isLeapYear(String year) {
+    private boolean isLeapYear(String year) {
         int yearInt = Integer.parseInt(year);
 
         if (yearInt % 4 == 0) {
