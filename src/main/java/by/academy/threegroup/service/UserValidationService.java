@@ -69,20 +69,12 @@ public class UserValidationService {
     }
 
     private static boolean validateDayMonth(String day, String month, String year) {
-
         String dayMonth = day + month;
-
         if (isLeapYear(year)) {
-            if (Pattern.matches(DAY_MONTH_LEAP_PATTERN, dayMonth)) {
-                return false;
-            }
+            return !Pattern.matches(DAY_MONTH_LEAP_PATTERN, dayMonth);
         } else {
-            if (Pattern.matches(DAY_MONTH_PATTERN, dayMonth)) {
-                return false;
-            }
+            return !Pattern.matches(DAY_MONTH_PATTERN, dayMonth);
         }
-
-        return true;
     }
 
     private static boolean isLeapYear(String year) {

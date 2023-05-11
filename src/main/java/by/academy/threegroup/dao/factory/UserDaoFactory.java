@@ -1,4 +1,4 @@
-package by.academy.threegroup.dao.memory.factory;
+package by.academy.threegroup.dao.factory;
 
 import by.academy.threegroup.dao.api.IUserDao;
 import by.academy.threegroup.dao.memory.UserDao;
