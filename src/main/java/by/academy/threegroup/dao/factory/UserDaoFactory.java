@@ -1,7 +1,7 @@
 package by.academy.threegroup.dao.factory;
 
 import by.academy.threegroup.dao.api.IUserDao;
-import by.academy.threegroup.dao.memory.UserDao;
+import by.academy.threegroup.dao.memory.UserMemoryDao;
 
 public class UserDaoFactory {
 
@@ -14,7 +14,7 @@ public class UserDaoFactory {
         if(instance == null){
             synchronized (UserDaoFactory.class){
                 if(instance == null){
-                    instance = new UserDao();
+                    instance = new UserMemoryDao();
                 }
             }
         }
