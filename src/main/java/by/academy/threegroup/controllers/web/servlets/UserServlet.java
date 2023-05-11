@@ -22,10 +22,7 @@ public class UserServlet extends HttpServlet {
     private static final String SURNAME_PARAM = "surname";
     private static final String DATE_OF_BIRTH_PARAM = "dateOfBirth";
 
-
-    public UserServlet() {
-    }
-
+    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

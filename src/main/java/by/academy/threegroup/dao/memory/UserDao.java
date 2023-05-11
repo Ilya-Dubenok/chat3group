@@ -34,7 +34,7 @@ public class UserDao implements IUserDao {
 
     @Override
     public UserDTO save(UserDTO item) {
-        return null;
+        return this.users.put(item.getLogin(), item);
     }
 
     @Override
