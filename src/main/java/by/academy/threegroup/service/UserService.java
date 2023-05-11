@@ -26,6 +26,15 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public UserDTO get(String login) {
+        UserDTO userDTO = userDao.get(login);
+        if (userDTO == null) {
+            throw new IllegalArgumentException("Such user doesn't exist");
+        }
+        return userDTO;
+    }
+
+    @Override
     public UserDTO save(UserCreateDTO item) {
 
         UserValidationService.validate(item);
@@ -43,14 +52,6 @@ public class UserService implements IUserService {
         return userDao.save(dto);
     }
 
-    @Override
-    public UserDTO get(String login){
-        UserDTO userDTO = userDao.get(login);
-        if(userDTO == null){
-            throw new IllegalArgumentException("Such user doesn't exist");
-        }
-        return userDTO;
-    }
 
     private LocalDate parseDateOfBirth(String date) {
 
