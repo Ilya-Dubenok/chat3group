@@ -3,16 +3,16 @@ package by.academy.threegroup.dao.factory;
 import by.academy.threegroup.dao.api.IUserDao;
 import by.academy.threegroup.dao.memory.UserMemoryDao;
 
-public class UserDaoFactory {
+public class UserMemoryDaoFactory {
 
     private static IUserDao instance;
 
-    private UserDaoFactory() {
+    private UserMemoryDaoFactory() {
     }
 
     public static IUserDao getInstance(){
         if(instance == null){
-            synchronized (UserDaoFactory.class){
+            synchronized (UserMemoryDaoFactory.class){
                 if(instance == null){
                     instance = new UserMemoryDao();
                 }
