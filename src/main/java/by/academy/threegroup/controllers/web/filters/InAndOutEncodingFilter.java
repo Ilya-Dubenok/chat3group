@@ -1,4 +1,4 @@
-package by.academy.threegroup.contollers.web.filters;
+package by.academy.threegroup.controllers.web.filters;
 
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;

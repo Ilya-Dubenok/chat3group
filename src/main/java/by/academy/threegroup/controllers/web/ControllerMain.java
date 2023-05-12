@@ -1,4 +1,4 @@
-package by.academy.threegroup.contollers.web;
+package by.academy.threegroup.controllers.web;
 
 import by.academy.threegroup.core.MessageCreateDTO;
 import by.academy.threegroup.core.MessageDTO;
