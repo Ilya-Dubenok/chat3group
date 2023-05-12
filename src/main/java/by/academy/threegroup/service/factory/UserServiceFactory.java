@@ -1,6 +1,6 @@
 package by.academy.threegroup.service.factory;
 
-import by.academy.threegroup.dao.memory.factory.UserDaoFactory;
+import by.academy.threegroup.dao.factory.UserMemoryDaoFactory;
 import by.academy.threegroup.service.UserService;
 import by.academy.threegroup.service.api.IUserService;
 
@@ -15,7 +15,7 @@ public class UserServiceFactory {
         if(instance == null){
             synchronized (UserServiceFactory.class){
                 if(instance == null){
-                    instance = new UserService(UserDaoFactory.getInstance());
+                    instance = new UserService(UserMemoryDaoFactory.getInstance());
                 }
             }
         }

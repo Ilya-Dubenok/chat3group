@@ -12,8 +12,6 @@ import java.util.List;
 
 public class UserService implements IUserService {
 
-    private static final String DATE_OF_BIRTH_FORMAT = "dd-MM-yyyy";
-
     private IUserDao userDao;
 
     public UserService(IUserDao userDao) {
@@ -26,37 +24,18 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserDTO save(UserCreateDTO item) {
-
-        UserValidationService.validate(item);
-
-        String login = item.getLogin();
-        Integer password = item.getPassword().hashCode();
-        String firstName = item.getFirstName();
-        String lastName = item.getLastName();
-        String surname = item.getSurname();
-        LocalDate dateOfBirth = parseDateOfBirth(item.getDateOfBirth());
-        LocalDate registrationDate = LocalDate.now();
-
-        UserDTO dto = new UserDTO(login, password, firstName, lastName, surname, dateOfBirth, registrationDate, UserRoles.USER);
-
-        return userDao.save(dto);
-    }
-
-    @Override
-    public UserDTO get(String login){
+    public UserDTO get(String login) {
         UserDTO userDTO = userDao.get(login);
-        if(userDTO == null){
+        if (userDTO == null) {
             throw new IllegalArgumentException("Such user doesn't exist");
         }
         return userDTO;
     }
 
-    private LocalDate parseDateOfBirth(String date) {
+    @Override
+    public UserDTO save(UserDTO user) {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_OF_BIRTH_FORMAT);
-        LocalDate dateOfBirth = LocalDate.parse(date, formatter);
-
-        return dateOfBirth;
+        return userDao.save(user);
     }
+
 }

@@ -1,8 +1,11 @@
 package by.academy.threegroup.controllers.web.servlets;
 
 import by.academy.threegroup.core.UserCreateDTO;
+import by.academy.threegroup.service.api.IUserLogUpService;
 import by.academy.threegroup.service.api.IUserService;
+import by.academy.threegroup.service.factory.UserLogUpServiceFactory;
 import by.academy.threegroup.service.factory.UserServiceFactory;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,18 +15,22 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "/user")
+@WebServlet(urlPatterns = "/api/user")
 public class UserServlet extends HttpServlet {
 
     private static final String LOGIN_PARAM = "login";
     private static final String PASSWORD_PARAM = "password";
+    private static final String CHECK_PASSWORD_PARAM = "checkPassword";
     private static final String FIRST_NAME_PARAM = "firstName";
     private static final String LAST_NAME_PARAM = "lastName";
     private static final String SURNAME_PARAM = "surname";
     private static final String DATE_OF_BIRTH_PARAM = "dateOfBirth";
 
 
-    public UserServlet() {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("ui/signUp.jsp");
+        requestDispatcher.forward(req,resp);
     }
 
     @Override
@@ -33,6 +40,7 @@ public class UserServlet extends HttpServlet {
 
         String login = getValue(parameterMap, LOGIN_PARAM);
         String password = getValue(parameterMap, PASSWORD_PARAM);
+        String checkPassword = getValue(parameterMap, CHECK_PASSWORD_PARAM);
         String firstName = getValue(parameterMap, FIRST_NAME_PARAM);
         String lastName = getValue(parameterMap, LAST_NAME_PARAM);
         String surname = getValue(parameterMap, SURNAME_PARAM);
@@ -47,13 +55,14 @@ public class UserServlet extends HttpServlet {
         UserCreateDTO dto = new UserCreateDTO();
         dto.setLogin(login);
         dto.setPassword(password);
+        dto.setCheckPassword(checkPassword);
         dto.setFirstName(firstName);
         dto.setLastName(lastName);
         dto.setSurname(surname);
         dto.setDateOfBirth(dateOfBirth);
 
-        IUserService userService = UserServiceFactory.getInstance();
-        userService.save(dto);
+        IUserLogUpService userLogUpService = UserLogUpServiceFactory.getInstance();
+        userLogUpService.save(dto);
     }
 
     private String getValue(Map<String, String[]> map, String paramName){
@@ -68,5 +77,6 @@ public class UserServlet extends HttpServlet {
         }
         return value;
     }
+
 
 }
