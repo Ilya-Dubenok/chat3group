@@ -28,12 +28,13 @@ public class UserDTO {
         this.registrationDate = registrationDate;
         this.role = role;
     }
-    public void setLogin(String login) {
-        this.login = login;
-    }
 
     public String getLogin() {
         return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public Integer getPassword() {
