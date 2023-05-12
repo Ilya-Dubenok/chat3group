@@ -5,6 +5,9 @@ pageEncoding="UTF-8"%>
     <title>LogUp</title>
 </head>
 <body>
+<header>
+    <h1>Registration</h1>
+</header>
 <form method="POST">
     <label for="login">Login:</label>
     <input type="text" id="login" name="login" required><br><br>
