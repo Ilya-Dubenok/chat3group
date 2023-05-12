@@ -8,17 +8,14 @@
                 	</head>
                 	<body>
                 		<form action="/chat3group-1.0-SNAPSHOT/api/login" method="POST">
-
-                	        </fieldset>
-
-                                <div>
-                                    <legend>Login:<br/></legend>
-                                    <textarea rows="1" cols="50" name="login"></textarea>
-                                </div>
-                                 <div>
-                                     <legend>Password:<br/></legend>
-                                     <textarea rows="1" cols="50" name="password"></textarea>
-                                 </div>
+                                <p>
+                                    <legend>Login:<br></legend>
+                                    <textarea rows="1" cols="50" name="login" required></textarea>
+                                </p>
+                                 <p>
+                                     <legend>Password:<br></legend>
+                                     <textarea rows="1" cols="50" name="password" required></textarea>
+                                 </p>
 
                                 <p><input type="submit" value="Submit"></p>
                         </form>
