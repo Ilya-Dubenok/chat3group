@@ -14,7 +14,6 @@ public class UserLogUpService implements IUserLogUpService {
 
     private static final String DATE_OF_BIRTH_FORMAT = "yyyy-MM-dd";
     private IUserService userService;
-
     private IUserValidationService userValidationService;
 
     public UserLogUpService(IUserService userService, IUserValidationService userValidationService) {

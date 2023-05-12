@@ -14,7 +14,7 @@ public class UserValidationServiceFactory {
         if(instance == null){
             synchronized (UserValidationServiceFactory.class){
                 if(instance == null){
-                    instance = new UserValidationService();
+                    instance = new UserValidationService(UserServiceFactory.getInstance());
                 }
             }
         }

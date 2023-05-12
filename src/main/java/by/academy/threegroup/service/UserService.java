@@ -1,13 +1,9 @@
 package by.academy.threegroup.service;
 
-import by.academy.threegroup.core.UserCreateDTO;
 import by.academy.threegroup.core.UserDTO;
-import by.academy.threegroup.core.enums.UserRoles;
 import by.academy.threegroup.dao.api.IUserDao;
 import by.academy.threegroup.service.api.IUserService;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class UserService implements IUserService {
