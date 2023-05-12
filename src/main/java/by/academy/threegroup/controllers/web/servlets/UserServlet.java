@@ -27,7 +27,7 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("ui/signUp.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/ui/signUp.jsp");
         requestDispatcher.forward(req, resp);
     }
 
@@ -61,6 +61,10 @@ public class UserServlet extends HttpServlet {
 
         IUserLogUpService userLogUpService = UserLogUpServiceFactory.getInstance();
         userLogUpService.save(dto);
+
+//        TODO
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("api/ui/init.jsp");
+        requestDispatcher.forward(req, resp);
     }
 
     private String getValue(Map<String, String[]> map, String paramName) {
