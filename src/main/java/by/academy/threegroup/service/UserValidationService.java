@@ -1,6 +1,8 @@
 package by.academy.threegroup.service;
 
 import by.academy.threegroup.core.UserCreateDTO;
+import by.academy.threegroup.core.UserDTO;
+import by.academy.threegroup.service.api.IUserService;
 import by.academy.threegroup.service.api.IUserValidationService;
 
 import java.util.regex.Pattern;
@@ -14,7 +16,10 @@ public class UserValidationService implements IUserValidationService {
     private static final String DAY_MONTH_PATTERN = "2902|3002|3102|3104|3106|3109|3111";
     private static final String DAY_MONTH_LEAP_PATTERN = "3002|3102|3104|3106|3109|3111";
 
-    public UserValidationService(){
+    private IUserService userService;
+
+    public UserValidationService(IUserService userService) {
+        this.userService = userService;
     }
 
     @Override
@@ -26,19 +31,31 @@ public class UserValidationService implements IUserValidationService {
 
     //    TODO
     private void validatePassword(String password, String checkPassword) {
-        if(!password.equals(checkPassword)){
+        if (!password.equals(checkPassword)) {
             throw new IllegalArgumentException("Passwords don't match");
         }
-        if(password.length() < 7){
+        if (password.length() < 7) {
             throw new IllegalArgumentException("Password is too short. Must be not less than 7 symbols");
         }
     }
 
-//    TODO
-    private void validateLogin(String login){
-        if(!Pattern.matches(LOGIN_PATTERN, login)){
+    //    TODO
+    private void validateLogin(String login) {
+
+        if (!Pattern.matches(LOGIN_PATTERN, login)) {
             throw new IllegalArgumentException("Login must contains latin letters, digits, \"_\",\".\". It can't begin and end with \"-\", \".\"");
         }
+
+        UserDTO loginCheck = null;
+        try{
+            loginCheck = userService.get(login);
+        }catch (IllegalArgumentException ignored){
+        }
+
+        if(loginCheck != null){
+            throw new IllegalArgumentException("Such user already exists");
+        }
+
     }
 
 
