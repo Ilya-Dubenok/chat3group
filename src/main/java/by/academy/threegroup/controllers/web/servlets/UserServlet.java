@@ -2,9 +2,7 @@ package by.academy.threegroup.controllers.web.servlets;
 
 import by.academy.threegroup.core.UserCreateDTO;
 import by.academy.threegroup.service.api.IUserLogUpService;
-import by.academy.threegroup.service.api.IUserService;
 import by.academy.threegroup.service.factory.UserLogUpServiceFactory;
-import by.academy.threegroup.service.factory.UserServiceFactory;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -29,8 +27,8 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("ui/signUp.jsp");
-        requestDispatcher.forward(req,resp);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/ui/signUp.jsp");
+        requestDispatcher.forward(req, resp);
     }
 
     @Override
@@ -48,7 +46,7 @@ public class UserServlet extends HttpServlet {
 
         boolean isValid = !(login == null || password == null || firstName == null || lastName == null || dateOfBirth == null);
 
-        if(!isValid){
+        if (!isValid) {
             resp.sendError(400);
         }
 
@@ -63,14 +61,18 @@ public class UserServlet extends HttpServlet {
 
         IUserLogUpService userLogUpService = UserLogUpServiceFactory.getInstance();
         userLogUpService.save(dto);
+
+//        TODO
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("api/ui/init.jsp");
+        requestDispatcher.forward(req, resp);
     }
 
-    private String getValue(Map<String, String[]> map, String paramName){
+    private String getValue(Map<String, String[]> map, String paramName) {
         String value = null;
-        if(map.containsKey(paramName)){
+        if (map.containsKey(paramName)) {
             String[] logins = map.get(paramName);
-            if(logins != null && logins.length == 1){
-                if(!"".equals(logins[0])){
+            if (logins != null && logins.length == 1) {
+                if (!"".equals(logins[0])) {
                     value = logins[0];
                 }
             }

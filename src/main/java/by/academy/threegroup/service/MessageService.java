@@ -14,9 +14,9 @@ public class MessageService implements IMessageService {
     private final IMessageDao dao = MessageMemoryDaoFactory.getInstance();
 
     @Override
-    public void save(MessageCreateDTO item) {
+    public MessageDTO save(MessageCreateDTO item) {
         validate(item);
-        dao.save(new MessageDTO(Instant.now().getEpochSecond()
+        return dao.save(new MessageDTO(Instant.now().getEpochSecond()
                 ,item.getSenderLogin()
                 ,item.getRecipientLogin()
                 ,item.getText()));

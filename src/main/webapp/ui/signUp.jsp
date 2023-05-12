@@ -5,6 +5,9 @@ pageEncoding="UTF-8"%>
     <title>LogUp</title>
 </head>
 <body>
+<header>
+    <h1>Registration</h1>
+</header>
 <form method="POST">
     <label for="login">Login:</label>
     <input type="text" id="login" name="login" required><br><br>
@@ -20,7 +23,7 @@ pageEncoding="UTF-8"%>
     <input type="text" id="surname" name="surname"> If exists<br><br>
     <label for="dateOfBirth">Date of birth:</label>
     <input type="date" id="dateOfBirth" name="dateOfBirth" required pattern="dd-mm-yyyy"><br><br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Send">
 </form>
 </body>
 </html>
