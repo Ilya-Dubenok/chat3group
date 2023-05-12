@@ -13,13 +13,14 @@ public class MessageMemoryDao implements IMessageDao {
     Map<String, List<MessageDTO>> messages = new HashMap<>();
 
     @Override
-    public void save(MessageDTO item) {
+    public MessageDTO save(MessageDTO item) {
         String recipientLogin = item.getRecipientLogin();
         if (messages.containsKey(recipientLogin)){
             messages.get(recipientLogin).add(item);
         } else {
             messages.put(recipientLogin, new ArrayList<>(List.of(item)));
         }
+        return item;
     }
 
     @Override

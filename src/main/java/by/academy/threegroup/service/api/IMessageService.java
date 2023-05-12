@@ -11,7 +11,7 @@ public interface IMessageService {
      * Сохранить сообщение, используя его получателя в качестве ключа
      * @param item сообщение, которое сохраняем
      */
-    void save (MessageCreateDTO item);
+    MessageDTO save (MessageCreateDTO item);
 
     /**
      * Отдать список всех сообщений, имеющих одного получателя
