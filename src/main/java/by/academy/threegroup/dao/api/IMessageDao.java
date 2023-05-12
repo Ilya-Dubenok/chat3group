@@ -5,7 +5,7 @@ import by.academy.threegroup.core.UserDTO;
 
 import java.util.List;
 
-public interface IMessageDao extends ICRUDDao{
+public interface IMessageDao {
 
     /**
      * Сохранить сообщение, используя его получателя в качестве ключа
@@ -15,7 +15,7 @@ public interface IMessageDao extends ICRUDDao{
 
     /**
      * Отдать список всех сообщений, имеющих одного получателя
-     * @param user пользователь, являющийся получателем сообщений
+     * @param userLogin пользователь, являющийся получателем сообщений
      * @return список сообщений)))
      */
     List<MessageDTO> get (String userLogin);
