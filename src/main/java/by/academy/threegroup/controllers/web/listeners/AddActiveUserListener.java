@@ -1,4 +1,4 @@
-package by.academy.threegroup.contollers.web.listeners;
+package by.academy.threegroup.controllers.web.listeners;
 
 import by.academy.threegroup.service.api.IStatisticService;
 import by.academy.threegroup.service.factory.StatisticsServiceFactory;
