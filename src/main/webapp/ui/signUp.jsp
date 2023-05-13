@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
 <header>
     <h1>Registration</h1>
 </header>
-<form method="POST">
+<form method="POST" action="/api/user">
     <label for="login">Login:</label>
     <input type="text" id="login" name="login" required><br><br>
     <label for="password">Password:</label>
