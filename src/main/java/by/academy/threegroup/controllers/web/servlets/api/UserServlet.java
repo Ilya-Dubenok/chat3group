@@ -1,4 +1,4 @@
-package by.academy.threegroup.controllers.web.servlets;
+package by.academy.threegroup.controllers.web.servlets.api;
 
 import by.academy.threegroup.core.UserCreateDTO;
 import by.academy.threegroup.service.api.IUserLogUpService;
