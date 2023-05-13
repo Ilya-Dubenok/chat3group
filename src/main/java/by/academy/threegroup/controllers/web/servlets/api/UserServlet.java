@@ -1,4 +1,4 @@
-package by.academy.threegroup.controllers.web.servlets;
+package by.academy.threegroup.controllers.web.servlets.api;
 
 import by.academy.threegroup.core.UserCreateDTO;
 import by.academy.threegroup.service.api.IUserLogUpService;
@@ -63,7 +63,7 @@ public class UserServlet extends HttpServlet {
         userLogUpService.save(dto);
 
 //        TODO
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("api/ui/init.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/ui/init.jsp");
         requestDispatcher.forward(req, resp);
     }
 

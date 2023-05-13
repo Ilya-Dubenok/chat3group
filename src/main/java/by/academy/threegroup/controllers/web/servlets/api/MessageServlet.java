@@ -1,4 +1,4 @@
-package by.academy.threegroup.controllers.web.servlets;
+package by.academy.threegroup.controllers.web.servlets.api;
 
 import by.academy.threegroup.core.MessageCreateDTO;
 import by.academy.threegroup.core.MessageDTO;
