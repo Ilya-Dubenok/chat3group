@@ -1,8 +1,11 @@
 package by.academy.threegroup.controllers.web.servlets.api;
 
 import by.academy.threegroup.core.UserCreateDTO;
+import by.academy.threegroup.core.UserDTO;
 import by.academy.threegroup.service.api.IUserLogUpService;
+import by.academy.threegroup.service.api.IUserService;
 import by.academy.threegroup.service.factory.UserLogUpServiceFactory;
+import by.academy.threegroup.service.factory.UserServiceFactory;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,6 +14,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet(urlPatterns = "/api/user")
@@ -27,8 +32,17 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/ui/signUp.jsp");
-        requestDispatcher.forward(req, resp);
+        PrintWriter writer = resp.getWriter();
+
+        IUserService userService = UserServiceFactory.getInstance();
+        List<UserDTO> userDTOS = userService.get();
+        StringBuilder message = new StringBuilder();
+        userDTOS.forEach(u -> {
+            message.append(u.toString());
+            message.append("<br>");
+        });
+
+        writer.write(message.toString());
     }
 
     @Override
