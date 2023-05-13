@@ -8,7 +8,10 @@ pageEncoding="UTF-8"%>
 <header>
     <h1>Registration</h1>
 </header>
-<form method="POST" action="/api/user">
+<%
+        String path = (String) request.getAttribute("path");
+        out.println("<form method=\"POST\" action=\"" + path + "/api/user\">");
+%>
     <label for="login">Login:</label>
     <input type="text" id="login" name="login" required><br><br>
     <label for="password">Password:</label>
@@ -22,7 +25,7 @@ pageEncoding="UTF-8"%>
     <label for="surname">Surname:</label>
     <input type="text" id="surname" name="surname"> If exists<br><br>
     <label for="dateOfBirth">Date of birth:</label>
-    <input type="date" id="dateOfBirth" name="dateOfBirth" required pattern="dd-mm-yyyy"><br><br>
+    <input type="date" id="dateOfBirth" name="dateOfBirth" required><br><br>
     <input type="submit" value="Send">
 </form>
 </body>
