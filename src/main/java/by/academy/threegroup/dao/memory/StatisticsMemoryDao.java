@@ -1,4 +1,4 @@
-package by.academy.threegroup.dao;
+package by.academy.threegroup.dao.memory;
 
 import by.academy.threegroup.dao.api.IStatisticDao;
 

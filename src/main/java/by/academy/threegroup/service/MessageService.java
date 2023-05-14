@@ -3,7 +3,7 @@ package by.academy.threegroup.service;
 import by.academy.threegroup.core.MessageCreateDTO;
 import by.academy.threegroup.core.MessageDTO;
 import by.academy.threegroup.dao.api.IMessageDao;
-import by.academy.threegroup.dao.factory.MessageMemoryDaoFactory;
+import by.academy.threegroup.dao.memory.factory.MessageMemoryDaoFactory;
 import by.academy.threegroup.service.api.IMessageService;
 
 import java.time.Instant;

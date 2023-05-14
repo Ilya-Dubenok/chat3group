@@ -1,4 +1,4 @@
-package by.academy.threegroup.controllers.web.servlets.api;
+package by.academy.threegroup.controllers.web.servlets.ui;
 
 import by.academy.threegroup.service.api.IStatisticService;
 import by.academy.threegroup.service.factory.StatisticsServiceFactory;
@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(urlPatterns = "/api/admin/statistics")
+@WebServlet(urlPatterns = "/ui/admin/statistics")
 public class StatisticsServlet extends HttpServlet {
 
     IStatisticService statisticService = StatisticsServiceFactory.getInstance();

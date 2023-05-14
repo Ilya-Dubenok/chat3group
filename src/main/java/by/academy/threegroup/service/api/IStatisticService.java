@@ -8,7 +8,9 @@ public interface IStatisticService {
 
     int incrementCountOfMessages();
 
-    int getCountOfUsers();
+    int getCountOfActiveUsers();
+
+    int getCountOfRegisteredUsers();
 
     int getCountOfMessages();
 
