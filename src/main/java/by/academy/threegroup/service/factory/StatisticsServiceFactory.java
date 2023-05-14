@@ -1,6 +1,6 @@
 package by.academy.threegroup.service.factory;
 
-import by.academy.threegroup.dao.factory.StatisticsMemoryDaoFactory;
+import by.academy.threegroup.dao.memory.factory.StatisticsMemoryDaoFactory;
 import by.academy.threegroup.service.StatisticsService;
 
 
