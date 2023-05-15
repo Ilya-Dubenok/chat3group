@@ -1,6 +1,5 @@
-package by.academy.threegroup.controllers.web.servlets.api;
+package by.academy.threegroup.controllers.web.servlets.ui;
 
-import by.academy.threegroup.service.LogOutService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,12 +8,13 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/api/logOut")
-public class LogOutServlet extends HttpServlet {
+
+@WebServlet(urlPatterns = "/ui/login")
+public class LogInUiServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        new LogOutService(req.getSession()).logOut();
 
-        req.getRequestDispatcher("/ui/").forward(req, resp);
+        req.getRequestDispatcher("/ui/signIn.jsp").forward(req, resp);
     }
+
 }
