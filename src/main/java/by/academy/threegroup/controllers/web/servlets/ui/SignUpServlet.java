@@ -13,6 +13,7 @@ import java.io.IOException;
 public class SignUpServlet extends HttpServlet {
 
     private static final String CONTEXT_PATH_PARAM = "path";
+    private static final String EXCEPTION_MESSAGE_PARAM = "exceptionMessage";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,7 +22,12 @@ public class SignUpServlet extends HttpServlet {
 
         String path = req.getContextPath();
         req.setAttribute(CONTEXT_PATH_PARAM, path);
+
+        String exceptionMessage = req.getParameter(EXCEPTION_MESSAGE_PARAM);
+        if (exceptionMessage != null) {
+            req.setAttribute(EXCEPTION_MESSAGE_PARAM, exceptionMessage);
+        }
+
         requestDispatcher.forward(req, resp);
     }
-
 }
