@@ -24,16 +24,21 @@ pageEncoding="UTF-8"%>
 
     <c:otherwise>
          <form action="/chat-1.0-SNAPSHOT/ui/send-message" method="GET">
-                    <button type="submit">Отправить сообщение</button>
+               <button type="submit">Отправить сообщение</button>
          </form>
          <form action="/chat-1.0-SNAPSHOT/ui/get-message" method="GET">
-                             <button type="submit">Просмотреть сообщения</button>
+               <button type="submit">Просмотреть сообщения</button>
          </form>
          <c:if test = "${user.role == 'ADMIN'}">
-         <form action="/chat-1.0-SNAPSHOT/ui/admin/statistics" method="GET">
-                                      <button type="submit">Просмотреть статистику</button>
-                  </form>
+            <form action="/chat-1.0-SNAPSHOT/ui/admin/statistics" method="GET">
+                <button type="submit">Просмотреть статистику</button>
+            </form>
          </c:if>
+         <%
+             out.println("<form method=\"GET\" action=\"" + path + "/api/logOut\">");
+         %>
+               <button type="submit">Выйти</button>
+         </form>
     </c:otherwise>
 </c:choose>
 

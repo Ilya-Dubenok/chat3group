@@ -27,5 +27,9 @@ pageEncoding="UTF-8"%>
         <form method="GET" action="<c:url value = "/ui/"/>">
             <p><button type="submit">Return</button></p>
         </form>
+
+        <form action="/chat-1.0-SNAPSHOT/api/logOut" method="GET">
+                       <button type="submit">Выйти</button>
+                 </form>
     </body>
 </html>

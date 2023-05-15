@@ -4,24 +4,37 @@
                 	<head>
                 		<meta charset="utf-8">
                 		<meta name="viewport" content="width=device-width, initial-scale=1">
-                		<title>signIn</title>
+                		<title>Вход</title>
                 	</head>
                 	<body>
-                		<form action="/chat-1.0-SNAPSHOT/api/login" method="POST">
+                	<%
+                            String exceptionMessage = (String) request.getSession().getAttribute("exceptionMessage");
+                            if(exceptionMessage != null){
+                                out.println("<p>" + exceptionMessage + "</p>");
+                            }
+                    %>
+                    <%
+                            String path = (String) request.getAttribute("path");
+                            out.println("<form method=\"POST\" action=\"" + path + "/api/login\">");
+                    %>
+
                                 <p>
-                                    <legend>Login:<br></legend>
-                                    <textarea rows="1" cols="50" name="login" required></textarea>
+                                    <legend>Логин:      </legend>
+                                    <input type="text" name="login" required></textarea>
                                 </p>
                                  <p>
-                                     <legend>Password:<br></legend>
-                                     <textarea rows="1" cols="50" name="password" required></textarea>
+                                     <legend>Пароль:  </legend>
+                                     <input type="password"  name="password" required></textarea>
                                  </p>
 
-                                <p><input type="submit" value="Log in"></p>
+                                <p><input type="submit" value="Войти"></p>
                         </form>
 
                         <br><br>
-                        <form action="/chat-1.0-SNAPSHOT/ui/" method="get">
+
+                        <%
+                              out.println("<form method=\"GET\" action=\"" + path + "/ui/\">");
+                        %>
                                 <p><input type="submit" value="Return"></p>
                         </form>
 

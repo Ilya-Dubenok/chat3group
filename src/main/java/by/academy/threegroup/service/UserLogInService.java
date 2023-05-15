@@ -2,20 +2,20 @@ package by.academy.threegroup.service;
 
 import by.academy.threegroup.core.UserDTO;
 import by.academy.threegroup.core.UserLogInDTO;
-import by.academy.threegroup.dao.api.IUserDao;
+import by.academy.threegroup.service.api.IUserService;
 import jakarta.servlet.http.HttpSession;
 
 public class UserLogInService {
     private final HttpSession session;
-    private final IUserDao userDao;
+    private final IUserService service;
 
-    public UserLogInService(HttpSession session, IUserDao userDao) {
+    public UserLogInService(HttpSession session, IUserService service) {
         this.session = session;
-        this.userDao = userDao;
+        this.service = service;
     }
 
     public void logIn(UserLogInDTO dto) {
-        UserDTO user = userDao.get(dto.getLogin());
+        UserDTO user = service.get(dto.getLogin());
         if(user != null) {
             if(user.getPassword().hashCode() == dto.getPassword().hashCode()) {
                 this.session.setAttribute("user", user);

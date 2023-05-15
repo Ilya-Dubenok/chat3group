@@ -35,7 +35,7 @@ pageEncoding="UTF-8"%>
 <%
         out.println("<form method=\"GET\" action=\"" + path + "/ui/\">");
 %>
-    <input type="submit" value="Index">
+    <input type="submit" value="Return">
 </form>
 </body>
 </html>
