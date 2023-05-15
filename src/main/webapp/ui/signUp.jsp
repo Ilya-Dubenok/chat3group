@@ -32,5 +32,10 @@ pageEncoding="UTF-8"%>
     <input type="date" id="dateOfBirth" name="dateOfBirth" required><br><br>
     <input type="submit" value="Send">
 </form>
+<%
+        out.println("<form method=\"GET\" action=\"" + path + "/ui/\">");
+%>
+    <input type="submit" value="Index">
+</form>
 </body>
 </html>
