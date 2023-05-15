@@ -27,4 +27,9 @@ public class MessageMemoryDao implements IMessageDao {
     public List<MessageDTO> get(String userLogin) {
         return new ArrayList<>(messages.get(userLogin));
     }
+
+    @Override
+    public List<String> getRecipients() {
+        return new ArrayList<>(messages.keySet());
+    }
 }
