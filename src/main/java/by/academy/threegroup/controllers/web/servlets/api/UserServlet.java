@@ -77,7 +77,7 @@ public class UserServlet extends HttpServlet {
         userLogUpService.save(dto);
 
 //        TODO
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/ui/init.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/ui/welcome.jsp");
         requestDispatcher.forward(req, resp);
     }
 

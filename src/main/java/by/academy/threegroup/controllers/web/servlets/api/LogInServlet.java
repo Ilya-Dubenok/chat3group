@@ -3,7 +3,6 @@ package by.academy.threegroup.controllers.web.servlets.api;
 import by.academy.threegroup.core.UserLogInDTO;
 import by.academy.threegroup.dao.memory.factory.UserMemoryDaoFactory;
 import by.academy.threegroup.service.UserLogInService;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,16 +13,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 
-@WebServlet(name = "LogInServlet", urlPatterns = "/api/login")
+@WebServlet(urlPatterns = "/api/login")
 public class LogInServlet extends HttpServlet {
     private static final String LOGIN_PARAM_NAME = "login";
     private static final String PASSWORD_PARAM_NAME = "password";
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/ui/signIn.jsp");
-        rd.include(req, resp);
-
-    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,6 +24,8 @@ public class LogInServlet extends HttpServlet {
 
         String login = null;
         String password = null;
+
+        String page = "";
 
         Map<String, String[]> param = req.getParameterMap();
         if(param != null) {
@@ -59,13 +54,18 @@ public class LogInServlet extends HttpServlet {
         if(login != null && password != null) {
             try{
                 (new UserLogInService(req.getSession(), UserMemoryDaoFactory.getInstance())).logIn(new UserLogInDTO(login, password));
+                page = "/ui/";
             } catch(IllegalArgumentException e) {
                 writer.write("Wrong login or password. Please try again.");
-                this.doGet(req, resp);
+                page = "/ui/login";
             }
         } else {
             resp.sendError(401);
         }
+
+        resp.sendRedirect(req.getContextPath() + page);
+
+       // req.getRequestDispatcher(page).forward(req, resp);
     }
 
 }
