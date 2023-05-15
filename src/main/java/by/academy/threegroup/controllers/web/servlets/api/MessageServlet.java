@@ -1,9 +1,10 @@
-package by.academy.threegroup.controllers.web.servlets;
+package by.academy.threegroup.controllers.web.servlets.api;
 
 import by.academy.threegroup.core.MessageCreateDTO;
 import by.academy.threegroup.core.MessageDTO;
 import by.academy.threegroup.core.UserDTO;
 import by.academy.threegroup.service.factory.MessageServiceFactory;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,6 +21,9 @@ public class MessageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/ui/message.jsp");
+        rd.include(req, resp);
+
         UserDTO currentUser = (UserDTO) req.getSession().getAttribute("user");
         String currentUserLogin = currentUser.getLogin();
 
@@ -34,8 +38,10 @@ public class MessageServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        UserDTO currentUser = (UserDTO) req.getSession().getAttribute("user");
-        String senderLogin = currentUser.getLogin();
+        /*UserDTO currentUser = (UserDTO) req.getSession().getAttribute("user");
+        String senderLogin = currentUser.getLogin();*/
+
+        String senderLogin = "Alex";
 
         String recipientLogin = req.getParameter("recipientLogin");
         String messageText = req.getParameter("messageText");
