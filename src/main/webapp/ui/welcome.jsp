@@ -23,10 +23,10 @@ pageEncoding="UTF-8"%>
     </c:when>
 
     <c:otherwise>
-         <form action="/chat-1.0-SNAPSHOT/ui/user/message" method="GET">
+         <form action="/chat-1.0-SNAPSHOT/ui/send-message" method="GET">
                     <button type="submit">Отправить сообщение</button>
          </form>
-         <form action="/chat-1.0-SNAPSHOT/ui/user/chats" method="GET">
+         <form action="/chat-1.0-SNAPSHOT/ui/get-message" method="GET">
                              <button type="submit">Просмотреть сообщения</button>
          </form>
          <c:if test = "${user.role == 'ADMIN'}">
