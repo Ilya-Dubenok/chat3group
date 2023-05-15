@@ -17,7 +17,7 @@ public class UserLogInService {
     public void logIn(UserLogInDTO dto) {
         UserDTO user = userDao.get(dto.getLogin());
         if(user != null) {
-            if(user.getPassword().equals(dto.getPassword())) {
+            if(user.getPassword().hashCode() == dto.getPassword().hashCode()) {
                 this.session.setAttribute("user", user);
             } else {
                 throw new IllegalArgumentException("Wrong password.");

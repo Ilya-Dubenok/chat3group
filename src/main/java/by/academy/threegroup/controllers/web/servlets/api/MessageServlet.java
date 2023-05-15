@@ -24,10 +24,9 @@ public class MessageServlet extends HttpServlet {
         String currentUserLogin = currentUser.getLogin();
 
         List<MessageDTO> messages = MessageServiceFactory.getInstance().get(currentUserLogin);
-        //todo передать в jsp для вывода
         PrintWriter writer = resp.getWriter();
         for (MessageDTO message : messages) {
-            writer.write(message.getText());
+            writer.write(message.getText() + "<br>");
         }
     }
 
@@ -41,5 +40,7 @@ public class MessageServlet extends HttpServlet {
         String messageText = req.getParameter("messageText");
 
         MessageServiceFactory.getInstance().save(new MessageCreateDTO(senderLogin, recipientLogin,messageText));
+
+        resp.sendRedirect(req.getHeader("referer"));
     }
 }
