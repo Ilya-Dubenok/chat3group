@@ -24,20 +24,20 @@ pageEncoding="UTF-8"%>
 
     <c:otherwise>
          <form action="<c:url value="/ui/send-message"/>" method="GET">
-                    <button type="submit">Отправить сообщение</button>
+               <button type="submit">Отправить сообщение</button>
          </form>
          <form action="<c:url value="/ui/get-message"/>" method="GET">
-                             <button type="submit">Просмотреть сообщения</button>
+               <button type="submit">Просмотреть сообщения</button>
          </form>
 
          <c:if test = "${user.role == 'ADMIN'}">
-         <form action="<c:url value="/ui/admin/statistics"/>" method="GET">
-                                      <button type="submit">Просмотреть статистику</button>
-                  </form>
+            <form action="<c:url value="/ui/admin/statistics"/>" method="GET">
+                <button type="submit">Просмотреть статистику</button>
+            </form>
          </c:if>
 
          <form action="<c:url value="/api/logOut"/>" method="GET">
-                                               <button type="submit">Выйти из сессии</button>
+               <button type="submit">Выйти из сессии</button>
          </form>
     </c:otherwise>
 </c:choose>

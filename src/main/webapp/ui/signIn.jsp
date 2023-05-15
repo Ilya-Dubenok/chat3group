@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
                 <html>
                 	<head>
@@ -7,35 +8,29 @@
                 		<title>Вход</title>
                 	</head>
                 	<body>
-                	<%
+                	    <%
                             String exceptionMessage = (String) request.getSession().getAttribute("exceptionMessage");
                             if(exceptionMessage != null){
                                 out.println("<p>" + exceptionMessage + "</p>");
                             }
-                    %>
-                    <%
-                            String path = (String) request.getAttribute("path");
-                            out.println("<form method=\"POST\" action=\"" + path + "/api/login\">");
-                    %>
-
+                        %>
+                        <form action="<c:url value="/api/login"/>" method="POST">
                                 <p>
-                                    <legend>Логин:      </legend>
-                                    <input type="text" name="login" required></textarea>
+                                     <legend>Логин:      </legend>
+                                     <input type="text" name="login" required>
                                 </p>
-                                 <p>
+                                <p>
                                      <legend>Пароль:  </legend>
-                                     <input type="password"  name="password" required></textarea>
-                                 </p>
+                                     <input type="password"  name="password" required>
+                                </p>
 
                                 <p><input type="submit" value="Войти"></p>
                         </form>
 
                         <br><br>
 
-                        <%
-                              out.println("<form method=\"GET\" action=\"" + path + "/ui/\">");
-                        %>
-                                <p><input type="submit" value="Return"></p>
+                        <form action="<c:url value="/ui/"/>" method="GET">
+                                <p><input type="submit" value="Назад"></p>
                         </form>
 
 

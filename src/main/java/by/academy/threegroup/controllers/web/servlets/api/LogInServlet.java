@@ -63,8 +63,6 @@ public class LogInServlet extends HttpServlet {
         } else {
             resp.sendError(401);
         }
-       // req.setAttribute("path", req.getContextPath());
-
         resp.sendRedirect(req.getContextPath() + page);
     }
 
