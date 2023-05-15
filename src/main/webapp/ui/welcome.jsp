@@ -14,10 +14,10 @@ pageEncoding="UTF-8"%>
 
 <c:choose>
     <c:when test="${empty user}">
-        <form action="/chat-1.0-SNAPSHOT/api/user" method="get">
+        <form action="/chat-1.0-SNAPSHOT/ui/signup" method="get">
                  <button type="submit">Зарегистрироваться</button>
         </form>
-        <form action="/chat-1.0-SNAPSHOT/api/login" method="get">
+        <form action="/chat-1.0-SNAPSHOT/ui/login" method="get">
                          <button type="submit">Войти в систему</button>
                 </form>
     </c:when>
