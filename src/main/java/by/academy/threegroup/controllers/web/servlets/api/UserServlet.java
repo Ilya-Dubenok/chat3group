@@ -28,6 +28,7 @@ public class UserServlet extends HttpServlet {
     private static final String LAST_NAME_PARAM = "lastName";
     private static final String SURNAME_PARAM = "surname";
     private static final String DATE_OF_BIRTH_PARAM = "dateOfBirth";
+    private static final String EXCEPTION_MESSAGE_PARAM = "exceptionMessage";
 
 
     @Override
@@ -74,11 +75,21 @@ public class UserServlet extends HttpServlet {
         dto.setDateOfBirth(dateOfBirth);
 
         IUserLogUpService userLogUpService = UserLogUpServiceFactory.getInstance();
-        userLogUpService.save(dto);
+        String message = null;
+        try {
+            userLogUpService.save(dto);
+        } catch (IllegalArgumentException ex) {
+            message = ex.getMessage();
+        }
 
-//        TODO
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/ui/welcome.jsp");
-        requestDispatcher.forward(req, resp);
+        String[] referer = req.getHeader("referer").split("\\?");
+        String path = req.getContextPath();
+
+        if (message == null) {
+            resp.sendRedirect(path + "/ui/");
+        } else {
+            resp.sendRedirect(referer[0] + "?" + EXCEPTION_MESSAGE_PARAM + "=" + message);
+        }
     }
 
     private String getValue(Map<String, String[]> map, String paramName) {
