@@ -23,10 +23,14 @@ public class MessageServlet extends HttpServlet {
         UserDTO currentUser = (UserDTO) req.getSession().getAttribute("user");
         String currentUserLogin = currentUser.getLogin();
 
-        List<MessageDTO> messages = MessageServiceFactory.getInstance().get(currentUserLogin);
-        PrintWriter writer = resp.getWriter();
-        for (MessageDTO message : messages) {
-            writer.write(message.getText() + "<br>");
+        try{
+            List<MessageDTO> messages = MessageServiceFactory.getInstance().get(currentUserLogin);
+            PrintWriter writer = resp.getWriter();
+            for (MessageDTO message : messages) {
+                writer.write(message.getText() + "<br>");
+            }
+        } catch (IllegalArgumentException e){
+            resp.getWriter().write("Error: " + e.getMessage() + ". Please try again");
         }
     }
 
@@ -39,7 +43,12 @@ public class MessageServlet extends HttpServlet {
         String recipientLogin = req.getParameter("recipientLogin");
         String messageText = req.getParameter("messageText");
 
-        MessageServiceFactory.getInstance().save(new MessageCreateDTO(senderLogin, recipientLogin,messageText));
+        try{
+            MessageServiceFactory.getInstance().save(new MessageCreateDTO(senderLogin, recipientLogin,messageText));
+        } catch (IllegalArgumentException e) {
+            resp.getWriter().write("Error: " + e.getMessage() + ". Please try again");
+            return;
+        }
 
         resp.sendRedirect(req.getHeader("referer"));
     }

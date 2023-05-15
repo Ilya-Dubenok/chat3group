@@ -19,9 +19,12 @@ public class GetMessageServlet extends HttpServlet {
         UserDTO currentUser = (UserDTO) req.getSession().getAttribute("user");
         String currentUserLogin = currentUser.getLogin();
 
-        List<MessageDTO> messages = MessageServiceFactory.getInstance().get(currentUserLogin);
-        req.setAttribute("messages", messages);
-
-        getServletContext().getRequestDispatcher("/ui/getMessage.jsp").forward(req, resp);
+        try{
+            List<MessageDTO> messages = MessageServiceFactory.getInstance().get(currentUserLogin);
+            req.setAttribute("messages", messages);
+            getServletContext().getRequestDispatcher("/ui/getMessage.jsp").forward(req, resp);
+        } catch (IllegalArgumentException e){
+            resp.getWriter().write("Error: " + e.getMessage() + ". Please try again");
+        }
     }
 }

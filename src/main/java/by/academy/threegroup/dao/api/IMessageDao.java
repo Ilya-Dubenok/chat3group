@@ -3,6 +3,7 @@ package by.academy.threegroup.dao.api;
 import by.academy.threegroup.core.MessageDTO;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IMessageDao{
 
@@ -18,4 +19,11 @@ public interface IMessageDao{
      * @return список сообщений)))
      */
     List<MessageDTO> get (String userLogin);
+
+
+    /**
+     * Отдать список всех пользователей, для которых есть больше одного сообщения
+     * @return список логинов пользователей
+     */
+    List<String> getRecipients ();
 }
