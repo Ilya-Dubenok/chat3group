@@ -31,6 +31,5 @@ public class WelcomePageServlet extends HttpServlet {
 
         dispatcher.forward(req, resp);
 
-
     }
 }
