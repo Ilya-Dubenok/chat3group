@@ -1,6 +1,6 @@
-package by.academy.threegroup.dao.factory;
+package by.academy.threegroup.dao.memory.factory;
 
-import by.academy.threegroup.dao.MessageMemoryDao;
+import by.academy.threegroup.dao.memory.MessageMemoryDao;
 
 public class MessageMemoryDaoFactory {
     private static volatile MessageMemoryDao instance;

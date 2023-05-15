@@ -7,7 +7,7 @@
                 		<title>signIn</title>
                 	</head>
                 	<body>
-                		<form action="/chat3group-1.0-SNAPSHOT/api/login" method="POST">
+                		<form action="/chat-1.0-SNAPSHOT/api/login" method="POST">
                                 <p>
                                     <legend>Login:<br></legend>
                                     <textarea rows="1" cols="50" name="login" required></textarea>
@@ -20,7 +20,7 @@
                                 <p><input type="submit" value="Submit"></p>
                         </form>
 
-                        <form action="/chat3group-1.0-SNAPSHOT/api/message" method="GET">
+                        <form action="/chat-1.0-SNAPSHOT/api/message" method="GET">
                              <p><input type="submit" value="Go to messages"></p>
                         </form>
 			        </body>

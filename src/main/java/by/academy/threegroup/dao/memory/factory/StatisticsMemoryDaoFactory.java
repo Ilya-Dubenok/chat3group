@@ -1,6 +1,6 @@
-package by.academy.threegroup.dao.factory;
+package by.academy.threegroup.dao.memory.factory;
 
-import by.academy.threegroup.dao.StatisticsMemoryDao;
+import by.academy.threegroup.dao.memory.StatisticsMemoryDao;
 
 public class StatisticsMemoryDaoFactory {
 
