@@ -14,30 +14,30 @@ pageEncoding="UTF-8"%>
 
 <c:choose>
     <c:when test="${empty user}">
-        <form action="/chat-1.0-SNAPSHOT/ui/signup" method="get">
+        <form action="<c:url value="/ui/signup"/>" method="get">
                  <button type="submit">Зарегистрироваться</button>
         </form>
-        <form action="/chat-1.0-SNAPSHOT/ui/login" method="get">
+        <form action="<c:url value="/ui/login"/>" method="get">
                          <button type="submit">Войти в систему</button>
                 </form>
     </c:when>
 
     <c:otherwise>
-         <form action="/chat-1.0-SNAPSHOT/ui/send-message" method="GET">
-               <button type="submit">Отправить сообщение</button>
+         <form action="<c:url value="/ui/send-message"/>" method="GET">
+                    <button type="submit">Отправить сообщение</button>
          </form>
-         <form action="/chat-1.0-SNAPSHOT/ui/get-message" method="GET">
-               <button type="submit">Просмотреть сообщения</button>
+         <form action="<c:url value="/ui/get-message"/>" method="GET">
+                             <button type="submit">Просмотреть сообщения</button>
          </form>
+
          <c:if test = "${user.role == 'ADMIN'}">
-            <form action="/chat-1.0-SNAPSHOT/ui/admin/statistics" method="GET">
-                <button type="submit">Просмотреть статистику</button>
-            </form>
+         <form action="<c:url value="/ui/admin/statistics"/>" method="GET">
+                                      <button type="submit">Просмотреть статистику</button>
+                  </form>
          </c:if>
-         <%
-             out.println("<form method=\"GET\" action=\"" + path + "/api/logOut\">");
-         %>
-               <button type="submit">Выйти</button>
+
+         <form action="<c:url value="/api/logOut"/>" method="GET">
+                                               <button type="submit">Выйти из сессии</button>
          </form>
     </c:otherwise>
 </c:choose>

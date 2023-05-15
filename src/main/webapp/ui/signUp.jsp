@@ -1,6 +1,7 @@
 <%@ page language="java"
 contentType="text/html;charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
     <title>LogUp</title>
 </head>
@@ -8,11 +9,11 @@ pageEncoding="UTF-8"%>
 <header>
     <h1>Registration</h1>
 </header>
+        <p><c:if test="${exceptionMessage != null}">
+            <c:out value="${exceptionMessage}"/>
+        </c:if><p>
+
 <%
-        String exceptionMessage = (String) request.getAttribute("exceptionMessage");
-        if(exceptionMessage != null){
-            out.println("<p>" + exceptionMessage + "</p>");
-        }
         String path = (String) request.getAttribute("path");
         out.println("<form method=\"POST\" action=\"" + path + "/api/user\">");
 %>

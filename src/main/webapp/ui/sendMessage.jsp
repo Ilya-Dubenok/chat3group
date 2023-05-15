@@ -9,6 +9,9 @@ pageEncoding="UTF-8"%>
 <header>
     <h1>Send Message</h1>
 </header>
+<header>
+    <h1>${Error}</h1>
+</header>
 <form method="POST" action="<c:url value = "/api/message"/>">
     <label for="recipientLogin">Recipient login:</label>
     <input type="text" id="recipientLogin" name="recipientLogin" required><br><br>
