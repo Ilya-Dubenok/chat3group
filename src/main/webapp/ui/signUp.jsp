@@ -9,6 +9,10 @@ pageEncoding="UTF-8"%>
     <h1>Registration</h1>
 </header>
 <%
+        String exceptionMessage = (String) request.getAttribute("exceptionMessage");
+        if(exceptionMessage != null){
+            out.println("<p>" + exceptionMessage + "</p>");
+        }
         String path = (String) request.getAttribute("path");
         out.println("<form method=\"POST\" action=\"" + path + "/api/user\">");
 %>

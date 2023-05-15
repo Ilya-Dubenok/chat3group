@@ -17,11 +17,14 @@
                                      <textarea rows="1" cols="50" name="password" required></textarea>
                                  </p>
 
-                                <p><input type="submit" value="Submit"></p>
+                                <p><input type="submit" value="Log in"></p>
                         </form>
 
-                        <form action="/chat-1.0-SNAPSHOT/api/message" method="GET">
-                             <p><input type="submit" value="Go to messages"></p>
+                        <br><br>
+                        <form action="/chat-1.0-SNAPSHOT/ui/" method="get">
+                                <p><input type="submit" value="Return"></p>
                         </form>
+
+
 			        </body>
 			    </html>
