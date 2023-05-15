@@ -7,6 +7,7 @@ import by.academy.threegroup.dao.memory.factory.MessageMemoryDaoFactory;
 import by.academy.threegroup.service.api.IMessageService;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class MessageService implements IMessageService {
@@ -16,10 +17,12 @@ public class MessageService implements IMessageService {
     @Override
     public MessageDTO save(MessageCreateDTO item) {
         validate(item);
-        return dao.save(new MessageDTO(Instant.now().getEpochSecond()
-                ,item.getSenderLogin()
-                ,item.getRecipientLogin()
-                ,item.getText()));
+        MessageDTO message = new MessageDTO();
+        message.setSendingTime(LocalDateTime.now());
+        message.setSenderLogin(item.getSenderLogin());
+        message.setRecipientLogin(item.getRecipientLogin());
+        message.setText(item.getText());
+        return dao.save(message);
     }
 
     @Override

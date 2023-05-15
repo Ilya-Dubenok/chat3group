@@ -14,11 +14,11 @@ pageEncoding="UTF-8"%>
     <input type="text" id="recipientLogin" name="recipientLogin" required><br><br>
     <label for="messageText">Message text:</label>
     <input type="text" id="messageText" name="messageText" required><br><br>
-    <button type="submit" value="Send">
+    <button type="submit">Send</button>
 </form>
 
 <form method="GET" action="<c:url value = "/ui/"/>">
-    <button type="submit" value="Return">
+    <button type="submit">Return</button>
 </form>
 </body>
 </html>
