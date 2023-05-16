@@ -26,4 +26,6 @@ public interface IMessageDao{
      * @return список логинов пользователей
      */
     List<String> getRecipients ();
+
+    Map<String, List<MessageDTO>> get();
 }

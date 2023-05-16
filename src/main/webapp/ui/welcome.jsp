@@ -14,7 +14,7 @@ pageEncoding="UTF-8"%>
 
 <c:choose>
     <c:when test="${empty user}">
-        <form action="/chat-1.0-SNAPSHOT/ui/signup" method="get">
+        <form action="<c:url value="/ui/signup"/>" method="get">
                  <button type="submit">Зарегистрироваться</button>
         </form>
         <form action="/chat-1.0-SNAPSHOT/ui/login" method="get">

@@ -4,11 +4,12 @@ import by.academy.threegroup.core.MessageCreateDTO;
 import by.academy.threegroup.core.MessageDTO;
 import by.academy.threegroup.dao.api.IMessageDao;
 import by.academy.threegroup.dao.memory.factory.MessageMemoryDaoFactory;
-import by.academy.threegroup.dao.memory.factory.UserMemoryDaoFactory;
 import by.academy.threegroup.service.api.IMessageService;
+import by.academy.threegroup.service.factory.UserServiceFactory;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 public class MessageService implements IMessageService {
 
@@ -33,9 +34,12 @@ public class MessageService implements IMessageService {
         return dao.get(userLogin);
     }
 
-    private void validate(MessageCreateDTO item) {
-        if(UserMemoryDaoFactory.getInstance().get(item.getRecipientLogin()) == null) {
-            throw new IllegalArgumentException("Non-existent user");
-        }
+    @Override
+    public Map<String, List<MessageDTO>> get() {
+        return dao.get();
+    }
+
+    private void validate(MessageCreateDTO item) throws IllegalArgumentException {
+        UserServiceFactory.getInstance().get(item.getRecipientLogin());
     }
 }
