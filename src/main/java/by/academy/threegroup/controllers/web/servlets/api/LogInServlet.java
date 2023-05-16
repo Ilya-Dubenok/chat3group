@@ -1,8 +1,8 @@
 package by.academy.threegroup.controllers.web.servlets.api;
 
 import by.academy.threegroup.core.UserLogInDTO;
-import by.academy.threegroup.dao.memory.factory.UserMemoryDaoFactory;
 import by.academy.threegroup.service.UserLogInService;
+import by.academy.threegroup.service.factory.UserServiceFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -53,19 +53,19 @@ public class LogInServlet extends HttpServlet {
 
         if(login != null && password != null) {
             try{
-                (new UserLogInService(req.getSession(), UserMemoryDaoFactory.getInstance())).logIn(new UserLogInDTO(login, password));
+                if(req.getSession().getAttribute("exceptionLogMessage") != null) {
+                    req.getSession().removeAttribute("exceptionLogMessage");
+                }
+                (new UserLogInService(req.getSession(), UserServiceFactory.getInstance())).logIn(new UserLogInDTO(login, password));
                 page = "/ui/";
             } catch(IllegalArgumentException e) {
-                writer.write("Wrong login or password. Please try again.");
+                req.getSession().setAttribute("exceptionLogMessage", "Неверный логин или пароль. Пожалуйста, повторите попытку.");
                 page = "/ui/login";
             }
         } else {
             resp.sendError(401);
         }
-
         resp.sendRedirect(req.getContextPath() + page);
-
-       // req.getRequestDispatcher(page).forward(req, resp);
     }
 
 }
