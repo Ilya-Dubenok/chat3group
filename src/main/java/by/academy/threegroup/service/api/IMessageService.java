@@ -4,6 +4,7 @@ import by.academy.threegroup.core.MessageCreateDTO;
 import by.academy.threegroup.core.MessageDTO;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IMessageService {
 
@@ -20,4 +21,6 @@ public interface IMessageService {
      * @return список сообщений)))
      */
     List<MessageDTO> get (String userLogin);
+
+    Map<String, List<MessageDTO>> get();
 }

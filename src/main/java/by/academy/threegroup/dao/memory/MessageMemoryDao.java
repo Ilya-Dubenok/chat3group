@@ -32,4 +32,9 @@ public class MessageMemoryDao implements IMessageDao {
     public List<String> getRecipients() {
         return new ArrayList<>(messages.keySet());
     }
+
+    @Override
+    public Map<String, List<MessageDTO>> get() {
+        return new HashMap<>(messages);
+    }
 }

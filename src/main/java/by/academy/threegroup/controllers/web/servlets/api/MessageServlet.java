@@ -43,13 +43,16 @@ public class MessageServlet extends HttpServlet {
         String recipientLogin = req.getParameter("recipientLogin");
         String messageText = req.getParameter("messageText");
 
+        String errorMessageParam = "";
+
         try{
             MessageServiceFactory.getInstance().save(new MessageCreateDTO(senderLogin, recipientLogin,messageText));
         } catch (IllegalArgumentException e) {
-            resp.getWriter().write("Error: " + e.getMessage() + ". Please try again");
-            return;
+            errorMessageParam = "errorMessage=" + e.getMessage() + ". Please try again";
         }
 
-        resp.sendRedirect(req.getHeader("referer"));
+        String referer = req.getHeader("referer");
+        String redirectPath = referer.substring(0, referer.indexOf("?")+1);
+        resp.sendRedirect(redirectPath + errorMessageParam);
     }
 }

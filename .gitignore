@@ -5,3 +5,4 @@ target/
 *.iml
 *.DS_Store
 *.bat
+/src/main/java/by/academy/threegroup/Main.java
