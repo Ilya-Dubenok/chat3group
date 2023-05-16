@@ -30,7 +30,7 @@
                         <br><br>
 
                         <form action="<c:url value="/ui/"/>" method="GET">
-                                <p><input type="submit" value="Назад"></p>
+                                <p><input type="submit" value="Вернуться на главную страницу"></p>
                         </form>
 
 
