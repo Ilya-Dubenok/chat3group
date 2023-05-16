@@ -14,6 +14,12 @@ public class SendMessageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/ui/sendMessage.jsp");
-        rd.include(req, resp);
+
+        String errorMessage = req.getParameter("errorMessage");
+        if (errorMessage != null) {
+            req.setAttribute("errorMessage", errorMessage);
+        }
+
+        rd.forward(req, resp);
     }
 }

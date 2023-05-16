@@ -2,6 +2,8 @@ package by.academy.threegroup.core;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 public class MessageDTO implements Serializable {
     private LocalDateTime sendingTime;
@@ -25,8 +27,8 @@ public class MessageDTO implements Serializable {
         this.text = text;
     }
 
-    public LocalDateTime getSendingTime() {
-        return sendingTime;
+    public String getSendingTime() {
+        return sendingTime.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT));
     }
 
     public String getSenderLogin() {

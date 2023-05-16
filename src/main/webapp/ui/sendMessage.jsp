@@ -5,27 +5,29 @@ pageEncoding="UTF-8"%>
 <head>
     <title>Send Message</title>
 </head>
-<body>
-<header>
-    <h1>Send Message</h1>
-</header>
-<header>
-    <h1>${Error}</h1>
-</header>
-<form method="POST" action="<c:url value = "/api/message"/>">
-    <label for="recipientLogin">Recipient login:</label>
-    <input type="text" id="recipientLogin" name="recipientLogin" required><br><br>
-    <label for="messageText">Message text:</label>
-    <input type="text" id="messageText" name="messageText" required><br><br>
-    <button type="submit">Send</button>
-</form>
+    <body>
+        <header>
+            <h1>Send Message</h1>
+        </header>
 
-<form method="GET" action="<c:url value = "/ui/"/>">
-    <button type="submit">Return</button>
-</form>
+        <p><c:if test="${errorMessage != null}">
+           <c:out value="${errorMessage}"/>
+        </c:if><p>
 
-<form action="/chat-1.0-SNAPSHOT/api/logOut" method="GET">
-               <button type="submit">Выйти</button>
-         </form>
-</body>
+        <form method="POST" action="<c:url value = "/api/message"/>">
+            <label for="recipientLogin">Recipient login:</label>
+            <input type="text" id="recipientLogin" name="recipientLogin" required><br><br>
+            <label for="messageText">Message text:</label>
+            <input type="text" id="messageText" name="messageText" required><br><br>
+            <button type="submit">Отправить</button>
+        </form>
+
+        <form method="GET" action="<c:url value = "/ui/"/>">
+            <button type="submit">На главную страницу</button>
+        </form>
+
+        <form method="GET" action="<c:url value = "/api/logOut"/>">
+            <button type="submit">Выйти из сессии</button>
+        </form>
+    </body>
 </html>

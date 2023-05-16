@@ -15,21 +15,22 @@ pageEncoding="UTF-8"%>
                 <th> At </th>
                 <th> Message </th>
             </tr>
-
-            <c:forEach var="message" items="${messages}">
-                <tr>
-                    <th>${message.senderLogin}</th>
-                    <th>${message.sendingTime}</th>
-                    <th>${message.text}</th>
-                </tr>
-            </c:forEach>
+            <c:if test="${messages != null}">
+                <c:forEach var="message" items="${messages}">
+                    <tr>
+                        <th>${message.senderLogin}</th>
+                        <th>${message.sendingTime}</th>
+                        <th>${message.text}</th>
+                    </tr>
+                </c:forEach>
+            </c:if>
         </table>
         <form method="GET" action="<c:url value = "/ui/"/>">
-            <p><button type="submit">Return</button></p>
+            <p><button type="submit">На главную страницу</button></p>
         </form>
 
-        <form action="/chat-1.0-SNAPSHOT/api/logOut" method="GET">
-                       <button type="submit">Выйти</button>
-                 </form>
+        <form method="GET" action="<c:url value = "/api/logOut"/>">
+            <button type="submit">Выйти из сессии</button>
+        </form>
     </body>
 </html>

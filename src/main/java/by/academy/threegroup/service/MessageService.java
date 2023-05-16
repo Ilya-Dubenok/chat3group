@@ -29,7 +29,7 @@ public class MessageService implements IMessageService {
     @Override
     public List<MessageDTO> get(String userLogin) {
         if (!dao.getRecipients().contains(userLogin)){
-            throw new IllegalArgumentException("No messages");
+            return null;
         }
         return dao.get(userLogin);
     }
