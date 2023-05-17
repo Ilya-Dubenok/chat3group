@@ -6,7 +6,6 @@ import by.academy.threegroup.service.api.IUserLogUpService;
 import by.academy.threegroup.service.api.IUserService;
 import by.academy.threegroup.service.factory.UserLogUpServiceFactory;
 import by.academy.threegroup.service.factory.UserServiceFactory;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,8 +14,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
+import java.net.URLEncoder;
+
 
 @WebServlet(urlPatterns = "/api/user")
 public class UserServlet extends HttpServlet {
@@ -88,7 +90,9 @@ public class UserServlet extends HttpServlet {
         if (message == null) {
             resp.sendRedirect(path + "/ui/");
         } else {
-            resp.sendRedirect(referer[0] + "?" + EXCEPTION_MESSAGE_PARAM + "=" + message);
+            String encodeMessage = URLEncoder.encode(message, StandardCharsets.UTF_8);
+            String link = referer[0] + "?" + EXCEPTION_MESSAGE_PARAM + "=" + encodeMessage;
+            resp.sendRedirect(link);
         }
     }
 

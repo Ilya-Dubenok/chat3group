@@ -23,7 +23,7 @@ public class UserService implements IUserService {
     public UserDTO get(String login) {
         UserDTO userDTO = userDao.get(login);
         if (userDTO == null) {
-            throw new IllegalArgumentException("Such user doesn't exist");
+            throw new IllegalArgumentException("Такого пользователя не существует");
         }
         return userDTO;
     }
