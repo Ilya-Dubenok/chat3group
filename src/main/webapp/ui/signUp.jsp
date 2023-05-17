@@ -13,10 +13,7 @@ pageEncoding="UTF-8"%>
             <c:out value="${exceptionMessage}"/>
         </c:if><p>
 
-<%
-        String path = (String) request.getAttribute("path");
-        out.println("<form method=\"POST\" action=\"" + path + "/api/user\">");
-%>
+<form action="<c:url value="/api/user"/>" method="POST">
     <label for="login">Login:</label>
     <input type="text" id="login" name="login" required><br><br>
     <label for="password">Password:</label>
@@ -33,9 +30,7 @@ pageEncoding="UTF-8"%>
     <input type="date" id="dateOfBirth" name="dateOfBirth" required><br><br>
     <input type="submit" value="Send">
 </form>
-<%
-        out.println("<form method=\"GET\" action=\"" + path + "/ui/\">");
-%>
+<form action="<c:url value="/ui"/>" method="GET">
     <input type="submit" value="Return">
 </form>
 </body>
