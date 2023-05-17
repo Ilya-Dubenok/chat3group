@@ -9,7 +9,7 @@
                 	</head>
                 	<body>
                 	    <%
-                            String exceptionMessage = (String) request.getSession().getAttribute("exceptionMessage");
+                            String exceptionMessage = (String) request.getSession().getAttribute("exceptionLogMessage");
                             if(exceptionMessage != null){
                                 out.println("<p>" + exceptionMessage + "</p>");
                             }
