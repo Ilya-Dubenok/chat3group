@@ -32,10 +32,10 @@ public class UserValidationService implements IUserValidationService {
     //    TODO
     private void validatePassword(String password, String checkPassword) {
         if (!password.equals(checkPassword)) {
-            throw new IllegalArgumentException("Passwords don't match");
+            throw new IllegalArgumentException("Пароли не совпадают");
         }
         if (password.length() < 7) {
-            throw new IllegalArgumentException("Password is too short. Must be not less than 7 symbols");
+            throw new IllegalArgumentException("Пароль слишком короткий. Должен быть не менее 7 символов");
         }
     }
 
@@ -43,7 +43,7 @@ public class UserValidationService implements IUserValidationService {
     private void validateLogin(String login) {
 
         if (!Pattern.matches(LOGIN_PATTERN, login)) {
-            throw new IllegalArgumentException("Login must contains latin letters, digits, \"_\",\".\". It can't begin and end with \"-\", \".\"");
+            throw new IllegalArgumentException("Логин может содержать латинские буквы, цифры, \"_\",\".\". Логин не может начинаться с \"-\", \".\"");
         }
 
         UserDTO loginCheck = null;
@@ -53,7 +53,7 @@ public class UserValidationService implements IUserValidationService {
         }
 
         if(loginCheck != null){
-            throw new IllegalArgumentException("Such user already exists");
+            throw new IllegalArgumentException("Такой логин уже существует");
         }
 
     }
@@ -62,13 +62,13 @@ public class UserValidationService implements IUserValidationService {
     private void validateDateOfBirth(String dateOfBirth) {
 
         if (dateOfBirth.length() != 10) {
-            throw new IllegalArgumentException("Invalid length of date of birth");
+            throw new IllegalArgumentException("Неверная длина даты рождения");
         }
 
         String[] dateParts = dateOfBirth.split("-");
 
         if (dateParts.length != 3) {
-            throw new IllegalArgumentException("Invalid format of date of birth");
+            throw new IllegalArgumentException("Неверный формат даты рождения");
         }
 
         String day = dateParts[2];
@@ -76,19 +76,19 @@ public class UserValidationService implements IUserValidationService {
         String year = dateParts[0];
 
         if (!Pattern.matches(DAY_PATTERN, day)) {
-            throw new IllegalArgumentException("Incorrect day of month");
+            throw new IllegalArgumentException("Неверный день месяца");
         }
 
         if (!Pattern.matches(MONTH_PATTERN, month)) {
-            throw new IllegalArgumentException("Incorrect month");
+            throw new IllegalArgumentException("Неверныц месяц");
         }
 
         if (!Pattern.matches(YEAR_PATTERN, year)) {
-            throw new IllegalArgumentException("Incorrect year");
+            throw new IllegalArgumentException("Неверный год");
         }
 
         if (!validateDayMonth(day, month, year)) {
-            throw new IllegalArgumentException("Incorrect year");
+            throw new IllegalArgumentException("Неверная дата рождения");
         }
     }
 
