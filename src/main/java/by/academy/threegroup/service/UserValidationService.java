@@ -29,7 +29,6 @@ public class UserValidationService implements IUserValidationService {
         validateDateOfBirth(dto.getDateOfBirth());
     }
 
-    //    TODO
     private void validatePassword(String password, String checkPassword) {
         if (!password.equals(checkPassword)) {
             throw new IllegalArgumentException("Пароли не совпадают");
@@ -39,7 +38,6 @@ public class UserValidationService implements IUserValidationService {
         }
     }
 
-    //    TODO
     private void validateLogin(String login) {
 
         if (!Pattern.matches(LOGIN_PATTERN, login)) {
