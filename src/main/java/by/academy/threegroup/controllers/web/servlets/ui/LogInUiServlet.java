@@ -13,8 +13,10 @@ import java.io.IOException;
 public class LogInUiServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         req.getRequestDispatcher("/ui/signIn.jsp").forward(req, resp);
-    }
 
+        if(req.getSession().getAttribute("exceptionLogMessage") != null) {
+            req.getSession().removeAttribute("exceptionLogMessage");
+        }
+    }
 }
