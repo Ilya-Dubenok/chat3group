@@ -1,8 +1,13 @@
 package by.academy.threegroup.service;
 
+import by.academy.threegroup.core.MessageDTO;
 import by.academy.threegroup.dao.api.IStatisticDao;
 import by.academy.threegroup.service.api.IStatisticService;
+import by.academy.threegroup.service.factory.MessageServiceFactory;
 import by.academy.threegroup.service.factory.UserServiceFactory;
+
+import java.util.List;
+import java.util.Map;
 
 public class StatisticsService implements IStatisticService {
 
@@ -42,6 +47,12 @@ public class StatisticsService implements IStatisticService {
 
     @Override
     public int getCountOfMessages() {
-        return statisticDao.getCountOfMessages();
+
+        return MessageServiceFactory.getInstance().get().values()
+                .stream().mapToInt(
+                        List::size
+                ).sum();
+
+
     }
 }
