@@ -7,7 +7,7 @@ import java.util.Objects;
 public class UserDTO {
 
     private String login;
-    private String password;
+    private Integer password;
     private String firstName;
     private String lastName;
     private String surname;
@@ -18,7 +18,7 @@ public class UserDTO {
     public UserDTO() {
     }
 
-    public UserDTO(String login, String password, String firstName, String lastName, String surname, LocalDate dateOfBirth, LocalDate registrationDate, UserRoles role) {
+    public UserDTO(String login, Integer password, String firstName, String lastName, String surname, LocalDate dateOfBirth, LocalDate registrationDate, UserRoles role) {
         this.login = login;
         this.password = password;
         this.firstName = firstName;
@@ -37,11 +37,11 @@ public class UserDTO {
         this.login = login;
     }
 
-    public String getPassword() {
+    public Integer getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(Integer password) {
         this.password = password;
     }
 

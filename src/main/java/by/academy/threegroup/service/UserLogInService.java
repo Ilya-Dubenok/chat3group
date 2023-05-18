@@ -3,8 +3,6 @@ package by.academy.threegroup.service;
 import by.academy.threegroup.core.UserDTO;
 import by.academy.threegroup.core.UserLogInDTO;
 import by.academy.threegroup.service.api.IUserService;
-import by.academy.threegroup.service.encryption.EncryptionFactory;
-import by.academy.threegroup.service.encryption.EncryptionService;
 import jakarta.servlet.http.HttpSession;
 
 public class UserLogInService {
@@ -19,7 +17,7 @@ public class UserLogInService {
     public void logIn(UserLogInDTO dto) {
         UserDTO user = service.get(dto.getLogin());
         if(user != null) {
-            if(EncryptionFactory.getInstance().checkPassword(dto.getPassword(), user.getPassword())) {
+            if(user.getPassword().hashCode() == dto.getPassword().hashCode()) {
                 this.session.setAttribute("user", user);
             } else {
                 throw new IllegalArgumentException("Wrong password.");

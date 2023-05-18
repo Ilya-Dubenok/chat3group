@@ -3,8 +3,6 @@ package by.academy.threegroup.dao.memory;
 import by.academy.threegroup.core.UserDTO;
 import by.academy.threegroup.core.enums.UserRoles;
 import by.academy.threegroup.dao.api.IUserDao;
-import by.academy.threegroup.service.encryption.EncryptionFactory;
-import by.academy.threegroup.service.encryption.EncryptionService;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -25,7 +23,7 @@ public class UserMemoryDao implements IUserDao {
         admin.setRole(UserRoles.ADMIN);
         admin.setRegistrationDate(LocalDate.now());
         admin.setDateOfBirth(LocalDate.now());
-        admin.setPassword(EncryptionFactory.getInstance().encryptPassword("admin123"));
+        admin.setPassword("admin123".hashCode());
         users.put(admin.getLogin(), admin);
     }
 

@@ -6,8 +6,6 @@ import by.academy.threegroup.core.enums.UserRoles;
 import by.academy.threegroup.service.api.IUserLogUpService;
 import by.academy.threegroup.service.api.IUserService;
 import by.academy.threegroup.service.api.IUserValidationService;
-import by.academy.threegroup.service.encryption.EncryptionFactory;
-import by.academy.threegroup.service.encryption.EncryptionService;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -29,7 +27,7 @@ public class UserLogUpService implements IUserLogUpService {
         this.userValidationService.validate(user);
 
         String login = user.getLogin();
-        String password = EncryptionFactory.getInstance().encryptPassword(user.getPassword());
+        Integer password = user.getPassword().hashCode();
         String firstName = user.getFirstName();
         String lastName = user.getLastName();
         String surname = user.getSurname();
