@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
 </head>
     <body>
         <header>
-            <h1>Send Message</h1>
+            <h1>Напишите сообщение</h1>
         </header>
 
         <p><c:if test="${errorMessage != null}">
@@ -15,9 +15,9 @@ pageEncoding="UTF-8"%>
         </c:if><p>
 
         <form method="POST" action="<c:url value = "/api/message"/>">
-            <label for="recipientLogin">Recipient login:</label>
+            <label for="recipientLogin">Кому (логин):</label>
             <input type="text" id="recipientLogin" name="recipientLogin" required><br><br>
-            <label for="messageText">Message text:</label>
+            <label for="messageText">Текст сообщения:</label>
             <input type="text" id="messageText" name="messageText" required><br><br>
             <button type="submit">Отправить</button>
         </form>

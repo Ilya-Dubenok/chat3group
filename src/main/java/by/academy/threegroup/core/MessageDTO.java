@@ -28,7 +28,7 @@ public class MessageDTO implements Serializable {
     }
 
     public String getSendingTime() {
-        return sendingTime.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT));
+        return sendingTime.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT, FormatStyle.SHORT));
     }
 
     public String getSenderLogin() {
