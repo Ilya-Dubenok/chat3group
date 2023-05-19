@@ -7,13 +7,13 @@ pageEncoding="UTF-8"%>
 </head>
     <body>
         <header>
-            <h1>Your messages</h1>
+            <h1>Ваши сообщения</h1>
         </header>
         <table border="1">
             <tr>
-                <th> From </th>
-                <th> At </th>
-                <th> Message </th>
+                <th> От кого </th>
+                <th> Когда пришло </th>
+                <th> Сообщение </th>
             </tr>
             <c:if test="${messages != null}">
                 <c:forEach var="message" items="${messages}">
