@@ -10,25 +10,26 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
-
-@WebServlet("/ui/get-message")
-public class GetMessageServlet extends HttpServlet {
+import java.util.Set;
+@WebServlet("/ui/show-senders")
+public class ShowSendersServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserDTO currentUser = (UserDTO) req.getSession().getAttribute("user");
         String currentUserLogin = currentUser.getLogin();
 
-        String sender = req.getParameter("sender");
-        List<MessageDTO> messages = MessageServiceFactory
-                .getInstance()
-                .get(currentUserLogin)
-                .stream()
-                .filter(e -> e.getSenderLogin().equals(sender))
-                .collect(Collectors.toList());
-        req.setAttribute("messages", messages);
+        List<MessageDTO> messages = MessageServiceFactory.getInstance().get(currentUserLogin);
 
-        getServletContext().getRequestDispatcher("/ui/getMessage.jsp").forward(req, resp);
+        if (messages != null){
+            Set<String> senders = new HashSet<>();
+            for (MessageDTO message : messages) {
+                senders.add(message.getSenderLogin());
+            }
+            req.setAttribute("senders", senders);
+        }
+
+        getServletContext().getRequestDispatcher("/ui/showSenders.jsp").forward(req, resp);
     }
 }

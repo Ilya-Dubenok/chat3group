@@ -26,7 +26,7 @@ pageEncoding="UTF-8"%>
          <form action="<c:url value="/ui/send-message"/>" method="GET">
                <button type="submit">Отправить сообщение</button>
          </form>
-         <form action="<c:url value="/ui/get-message"/>" method="GET">
+         <form action="<c:url value="/ui/show-senders"/>" method="GET">
                <button type="submit">Просмотреть сообщения</button>
          </form>
 
