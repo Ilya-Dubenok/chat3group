@@ -2,6 +2,7 @@ package by.academy.threegroup.controllers.web.servlets.ui;
 
 import by.academy.threegroup.service.api.IStatisticService;
 import by.academy.threegroup.service.factory.StatisticsServiceFactory;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,14 +19,17 @@ public class StatisticsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter writer = resp.getWriter();
+
         int countOfActiveUsers = statisticService.getCountOfActiveUsers();
         int countOfRegisteredUsers = statisticService.getCountOfRegisteredUsers();
         int countOfMessages = statisticService.getCountOfMessages();
 
-        //TODO ПЕРЕПИСАТЬ НА JSP СТРАНИЦУ
-        writer.write("активных пользователей: " + countOfActiveUsers + " сообщений: " + countOfMessages +
-                " всего зарегистрировано пользователей: " + countOfRegisteredUsers);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/ui/admin/statistics.jsp");
+        req.setAttribute("activeUsers", countOfActiveUsers);
+        req.setAttribute("messages", countOfMessages);
+        req.setAttribute("registeredUsers", countOfRegisteredUsers);
+
+        requestDispatcher.forward(req, resp);
 
     }
 }

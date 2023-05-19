@@ -53,9 +53,6 @@ public class LogInServlet extends HttpServlet {
 
         if(login != null && password != null) {
             try{
-                if(req.getSession().getAttribute("exceptionLogMessage") != null) {
-                    req.getSession().removeAttribute("exceptionLogMessage");
-                }
                 (new UserLogInService(req.getSession(), UserServiceFactory.getInstance())).logIn(new UserLogInDTO(login, password));
                 page = "/ui/";
             } catch(IllegalArgumentException e) {
