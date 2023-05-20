@@ -12,6 +12,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/api/message")
@@ -48,11 +50,13 @@ public class MessageServlet extends HttpServlet {
         try{
             MessageServiceFactory.getInstance().save(new MessageCreateDTO(senderLogin, recipientLogin,messageText));
         } catch (IllegalArgumentException e) {
-            errorMessageParam = "errorMessage=" + e.getMessage() + ". Please try again";
+            errorMessageParam = "errorMessage=" + URLEncoder.encode(e.getMessage(), StandardCharsets.UTF_8);
         }
 
         String referer = req.getHeader("referer");
-        String redirectPath = referer.substring(0, referer.indexOf("?")+1);
-        resp.sendRedirect(redirectPath + errorMessageParam);
+        if(referer.contains("?")){
+            referer = referer.substring(0, referer.indexOf("?")+1);
+        }
+        resp.sendRedirect(referer + errorMessageParam);
     }
 }
