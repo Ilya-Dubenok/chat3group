@@ -84,7 +84,10 @@ public class UserServlet extends HttpServlet {
             message = ex.getMessage();
         }
 
-        String[] referer = req.getHeader("referer").split("\\?");
+        String referer = req.getHeader("referer");
+        if(referer.contains("?")){
+            referer = referer.substring(0, referer.indexOf("?"));
+        }
         String path = req.getContextPath();
 
         if (message == null) {
