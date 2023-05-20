@@ -13,7 +13,11 @@ pageEncoding="UTF-8"%>
 
 Активных пользователей: <c:out value="${activeUsers}"/><br>
 Отправлено сообщений: <c:out value="${messages}" /><br>
-Всего зарегистрировано пользователей: <c:out value="${registeredUsers}" /><br>
+Всего зарегистрировано пользователей: <c:out value="${registeredUsers}" /><br><br>
+
+<a href="${pageContext.request.contextPath}/ui"/>
+<button>Назад</button>
+</a>
 
 
 </body>
