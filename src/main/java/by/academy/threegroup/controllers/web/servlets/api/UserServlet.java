@@ -94,7 +94,7 @@ public class UserServlet extends HttpServlet {
             resp.sendRedirect(path + "/ui/");
         } else {
             String encodeMessage = URLEncoder.encode(message, StandardCharsets.UTF_8);
-            String link = referer[0] + "?" + EXCEPTION_MESSAGE_PARAM + "=" + encodeMessage;
+            String link = referer + "?" + EXCEPTION_MESSAGE_PARAM + "=" + encodeMessage;
             resp.sendRedirect(link);
         }
     }
