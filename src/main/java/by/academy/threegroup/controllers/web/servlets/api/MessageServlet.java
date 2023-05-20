@@ -57,6 +57,6 @@ public class MessageServlet extends HttpServlet {
         if(referer.contains("?")){
             referer = referer.substring(0, referer.indexOf("?")+1);
         }
-        resp.sendRedirect(referer + errorMessageParam);
+        resp.sendRedirect(referer + "?" + errorMessageParam);
     }
 }
