@@ -2,9 +2,9 @@ package by.academy.threegroup.controllers.web.servlets.api;
 
 import by.academy.threegroup.core.UserCreateDTO;
 import by.academy.threegroup.core.UserDTO;
-import by.academy.threegroup.service.api.IUserLogUpService;
+import by.academy.threegroup.service.api.IUserSignUpService;
 import by.academy.threegroup.service.api.IUserService;
-import by.academy.threegroup.service.factory.UserLogUpServiceFactory;
+import by.academy.threegroup.service.factory.UserSignUpServiceFactory;
 import by.academy.threegroup.service.factory.UserServiceFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -76,10 +76,10 @@ public class UserServlet extends HttpServlet {
         dto.setSurname(surname);
         dto.setDateOfBirth(dateOfBirth);
 
-        IUserLogUpService userLogUpService = UserLogUpServiceFactory.getInstance();
+        IUserSignUpService userSignUpService = UserSignUpServiceFactory.getInstance();
         String message = null;
         try {
-            userLogUpService.save(dto);
+            userSignUpService.save(dto);
         } catch (IllegalArgumentException ex) {
             message = ex.getMessage();
         }

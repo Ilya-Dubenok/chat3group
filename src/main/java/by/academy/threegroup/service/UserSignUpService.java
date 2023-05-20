@@ -3,20 +3,20 @@ package by.academy.threegroup.service;
 import by.academy.threegroup.core.UserCreateDTO;
 import by.academy.threegroup.core.UserDTO;
 import by.academy.threegroup.core.enums.UserRoles;
-import by.academy.threegroup.service.api.IUserLogUpService;
+import by.academy.threegroup.service.api.IUserSignUpService;
 import by.academy.threegroup.service.api.IUserService;
 import by.academy.threegroup.service.api.IUserValidationService;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class UserLogUpService implements IUserLogUpService {
+public class UserSignUpService implements IUserSignUpService {
 
     private static final String DATE_OF_BIRTH_FORMAT = "yyyy-MM-dd";
     private IUserService userService;
     private IUserValidationService userValidationService;
 
-    public UserLogUpService(IUserService userService, IUserValidationService userValidationService) {
+    public UserSignUpService(IUserService userService, IUserValidationService userValidationService) {
         this.userService = userService;
         this.userValidationService = userValidationService;
     }
