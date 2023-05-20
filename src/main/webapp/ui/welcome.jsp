@@ -27,11 +27,12 @@ pageEncoding="UTF-8"%>
     </c:when>
 
     <c:otherwise>
-         <a href="${pageContext.request.contextPath}/ui/send-message" >
+
+         <a href="${pageContext.request.contextPath}/ui/user/send-message" >
                <button>Отправить сообщение</button>
          </a>
          <br><br>
-         <a href="${pageContext.request.contextPath}/ui/show-senders" >
+         <a href="${pageContext.request.contextPath}/ui/user/show-senders" >
                <button>Просмотреть сообщения</button>
          </a>
          <br><br>

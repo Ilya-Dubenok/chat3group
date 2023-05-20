@@ -14,7 +14,7 @@ pageEncoding="UTF-8"%>
             Нет сообщений
         </c:if></p>
 
-        <form method="GET" action="<c:url value = "/ui/get-message"/>">
+        <form method="GET" action="<c:url value = "/ui/user/get-message"/>">
             <c:if test="${senders != null}">
                <c:forEach var="sender" items="${senders}">
                    <p><button type="submit" name="sender" value="${sender}">
