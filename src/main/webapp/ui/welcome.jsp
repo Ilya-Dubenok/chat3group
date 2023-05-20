@@ -14,31 +14,39 @@ pageEncoding="UTF-8"%>
 
 <c:choose>
     <c:when test="${empty user}">
-        <form action="<c:url value="/ui/signup"/>" method="get">
-                 <button type="submit">Зарегистрироваться</button>
-        </form>
-        <form action="<c:url value="/ui/login"/>" method="get">
-                         <button type="submit">Войти в систему</button>
-                </form>
+        <a href="${pageContext.request.contextPath}/ui/signup">
+                 <button>Зарегистрироваться</button>
+        </a>
+        <br><br>
+
+
+        <a href="${pageContext.request.contextPath}/ui/login">
+        <button>Войти в систему</button>
+        </a>
+        <br><br>
     </c:when>
 
     <c:otherwise>
-         <form action="<c:url value="/ui/user/send-message"/>" method="GET">
-               <button type="submit">Отправить сообщение</button>
-         </form>
-         <form action="<c:url value="/ui/user/show-senders"/>" method="GET">
-               <button type="submit">Просмотреть сообщения</button>
-         </form>
+
+         <a href="${pageContext.request.contextPath}/ui/user/send-message" >
+               <button>Отправить сообщение</button>
+         </a>
+         <br><br>
+         <a href="${pageContext.request.contextPath}/ui/user/show-senders" >
+               <button>Просмотреть сообщения</button>
+         </a>
+         <br><br>
 
          <c:if test = "${user.role == 'ADMIN'}">
-            <form action="<c:url value="/ui/admin/statistics"/>" method="GET">
-                <button type="submit">Просмотреть статистику</button>
-            </form>
+            <a href="${pageContext.request.contextPath}/ui/admin/statistics" >
+                <button>Просмотреть статистику</button>
+            </a>
+            <br><br>
          </c:if>
 
-         <form action="<c:url value="/api/logOut"/>" method="GET">
-               <button type="submit">Выйти из сессии</button>
-         </form>
+         <a href="${pageContext.request.contextPath}/api/logOut" >
+               <button>Выйти из сессии</button>
+         </a>
     </c:otherwise>
 </c:choose>
 
