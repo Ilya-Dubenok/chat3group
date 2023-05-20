@@ -1,6 +1,6 @@
 package by.academy.threegroup.core;
 
-public class MessageCreateDTO implements IDTO{
+public class MessageCreateDTO{
     private final String senderLogin;
     private final String recipientLogin;
     private final String text;
